@@ -1,0 +1,131 @@
+using Moq;
+using NUnit.Framework;
+using Photofeud;
+using Photofeud.Abstractions;
+using Photofeud.Authentication;
+using System;
+
+public class PlayerRegistrationProcessorTests
+{
+    readonly string _email;
+    readonly string _password;
+
+    readonly PlayerRegistrationProcessor _processor;
+    readonly Mock<IPlayerRegistrationService> _playerRegistrationService;
+    readonly Player _player;
+
+    public PlayerRegistrationProcessorTests()
+    {
+        _email = "email@email.com";
+        _password = "password";
+
+        _playerRegistrationService = new Mock<IPlayerRegistrationService>();
+        _processor = new PlayerRegistrationProcessor(_playerRegistrationService.Object);
+        _player = new Player("Wktb8xUwmyZCtqUF7qvAGXeWPCt2", "7r78", _email);
+    }
+
+    [Test]
+    public void Should_Throw_Exception_When_Email_Is_Not_Assigned()
+    {
+        var exception = Assert.Throws<ArgumentNullException>(() => _processor.RegisterPlayer(null, _password));
+
+        Assert.AreEqual("email", exception.ParamName);
+    }
+
+    [Test]
+    public void Should_Throw_Exception_When_Password_Is_Not_Assigned()
+    {
+        var exception = Assert.Throws<ArgumentNullException>(() => _processor.RegisterPlayer(_email, null));
+
+        Assert.AreEqual("password", exception.ParamName);
+    }
+
+    [Test]
+    public void Should_Raise_Expected_Event_On_Success()
+    {
+        var authenticationResult = new AuthenticationResult();
+
+        _playerRegistrationService.Setup(x => x.Register(It.IsAny<string>(), It.IsAny<string>()))
+            .Returns<string, string>(async (x, y) => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Success });
+
+        var raised = false;
+
+        _processor.PlayerRegistrationSucceeded += (sender, args) =>
+        {
+            raised = true;
+        };
+
+        _processor.RegisterPlayer(_email, _password);
+
+        Assert.IsTrue(raised);
+    }
+
+    [Test]
+    public void Should_Raise_Expected_Event_On_Error()
+    {
+        var authenticationResult = new AuthenticationResult();
+
+        _playerRegistrationService.Setup(x => x.Register(It.IsAny<string>(), It.IsAny<string>()))
+            .Returns<string, string>(async (x, y) => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Error });
+
+        var raised = false;
+
+        _processor.PlayerRegistrationFailed += (sender, args) =>
+        {
+            raised = true;
+        };
+
+        _processor.RegisterPlayer(_email, _password);
+
+        Assert.IsTrue(raised);
+    }
+
+    [TestCase(null, "password")]
+    [TestCase("email@email.com", null)]
+    [TestCase(null, null)]
+    public void Should_Not_Raise_Event_When_Email_Or_Password_Is_Not_Assigned(string email, string password)
+    {
+        var raised = false;
+
+        _processor.PlayerRegistrationSucceeded += (sender, args) =>
+        {
+            raised = true;
+        };
+
+        _processor.PlayerRegistrationFailed += (sender, args) =>
+        {
+            raised = true;
+        };
+
+        Assert.Throws<ArgumentNullException>(() => _processor.RegisterPlayer(email, password));
+        Assert.IsFalse(raised);
+    }
+
+    [Test]
+    public void Should_Return_Player_On_Success()
+    {
+        var authenticationResult = new AuthenticationResult();
+
+        _playerRegistrationService.Setup(x => x.Register(It.IsAny<string>(), It.IsAny<string>()))
+            .Returns<string, string>(async (x, y) => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Success, Player = _player });
+
+        _processor.RegisterPlayer(_email, _password);
+
+        Assert.AreSame(authenticationResult.Player, _player);
+        Assert.IsNotNull(authenticationResult.Player);
+    }
+
+    [Test]
+    public void Should_Not_Return_Player_On_Error()
+    {
+        var authenticationResult = new AuthenticationResult();
+
+        _playerRegistrationService.Setup(x => x.Register(It.IsAny<string>(), It.IsAny<string>()))
+            .Returns<string, string>(async (x, y) => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Error });
+
+        _processor.RegisterPlayer(_email, _password);
+
+        Assert.AreNotSame(authenticationResult.Player, _player);
+        Assert.IsNull(authenticationResult.Player);
+    }
+}

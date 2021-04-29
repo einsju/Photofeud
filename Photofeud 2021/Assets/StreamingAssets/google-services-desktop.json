@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1053750154338",
+    "project_id": "photofeud-227a2",
+    "storage_bucket": "photofeud-227a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1053750154338:android:c5aaab10d492cbfecd2d3b",
+        "android_client_info": {
+          "package_name": "com.einarsen.photofeud"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1053750154338-8ve1pqfaiirliva3ao6nmlhvb0qfd8ov.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUVMrS2h1p8qQ0zBk7hn1N9otEoE5-pDk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1053750154338-8ve1pqfaiirliva3ao6nmlhvb0qfd8ov.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1053750154338-h9p437qbfudb0gbh1d8q9dp0hno6aubk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.einarsen.photofeud"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
