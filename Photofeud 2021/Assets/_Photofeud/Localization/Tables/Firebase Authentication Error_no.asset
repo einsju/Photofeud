@@ -39,7 +39,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 16361628884992
-    m_Localized: Passordet er for svakt
+    m_Localized: Passord er for svakt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1071930271850496
+    m_Localized: Feil e-post adresse eller passord
     m_Metadata:
       m_Items: []
   references:

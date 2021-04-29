@@ -42,5 +42,9 @@ MonoBehaviour:
     m_Localized: Password is too weak
     m_Metadata:
       m_Items: []
+  - m_Id: 1071930271850496
+    m_Localized: Wrong email or password
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
