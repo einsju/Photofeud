@@ -1,7 +1,6 @@
-﻿using Photofeud.Authentication;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace Photofeud.Abstractions
+namespace Photofeud.Authentication
 {
     public interface IPlayerRegistrationService
     {

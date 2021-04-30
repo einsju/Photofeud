@@ -1,17 +1,13 @@
-﻿using Photofeud.Abstractions;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
 namespace Photofeud.Authentication
 {
-    public class PlayerRegistrationProcessor
+    public class PlayerRegistrationProcessor : PlayerAuthenticationProcessor
     {
         const string InvalidEmail = "Invalid Email";
         const string InvalidPassword = "Invalid Password";
 
-        public event EventHandler PlayerRegistrationSucceeded;
-        public event EventHandler<string> PlayerRegistrationFailed;
-        
         IPlayerRegistrationService _playerRegistrationService;
 
         bool IsFieldAssigned(string field) => !string.IsNullOrEmpty(field);
@@ -24,7 +20,6 @@ namespace Photofeud.Authentication
         public void RegisterPlayer(string email, string password)
         {
             ValidateSignUpInput(email, password);
-
             _ = Register(email, password);
         }
 
@@ -46,11 +41,11 @@ namespace Photofeud.Authentication
 
             if (result.Code != AuthenticationResultCode.Success)
             {
-                PlayerRegistrationFailed?.Invoke(this, result.ErrorMessage);
+                OnPlayerAuthenticationFailed(result.ErrorMessage);
                 return;
             }
 
-            PlayerRegistrationSucceeded?.Invoke(this, null);
+            OnPlayerAuthenticated();
         }
     }
 }

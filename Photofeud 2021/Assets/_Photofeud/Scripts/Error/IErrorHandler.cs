@@ -1,4 +1,4 @@
-namespace Photofeud.Abstractions
+namespace Photofeud.Error
 {
     public interface IErrorHandler
     {

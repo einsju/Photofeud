@@ -1,7 +1,6 @@
 using Moq;
 using NUnit.Framework;
 using Photofeud;
-using Photofeud.Abstractions;
 using Photofeud.Authentication;
 using System;
 
@@ -50,7 +49,7 @@ public class PlayerLoginProcessorTests
 
         var raised = false;
 
-        _processor.PlayerLoginSucceeded += (sender, args) =>
+        _processor.PlayerAuthenticated += (sender, args) =>
         {
             raised = true;
         };
@@ -70,7 +69,7 @@ public class PlayerLoginProcessorTests
 
         var raised = false;
 
-        _processor.PlayerLoginFailed += (sender, args) =>
+        _processor.PlayerAuthenticationFailed += (sender, args) =>
         {
             raised = true;
         };
@@ -87,12 +86,12 @@ public class PlayerLoginProcessorTests
     {
         var raised = false;
 
-        _processor.PlayerLoginSucceeded += (sender, args) =>
+        _processor.PlayerAuthenticated += (sender, args) =>
         {
             raised = true;
         };
 
-        _processor.PlayerLoginFailed += (sender, args) =>
+        _processor.PlayerAuthenticationFailed += (sender, args) =>
         {
             raised = true;
         };

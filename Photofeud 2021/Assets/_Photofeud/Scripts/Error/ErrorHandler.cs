@@ -1,9 +1,8 @@
-using Photofeud.Abstractions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Photofeud
+namespace Photofeud.Error
 {
     public class ErrorHandler : MonoBehaviour, IErrorHandler
     {
@@ -25,7 +24,7 @@ namespace Photofeud
         void OnDisable()
         {
             close.onClick.RemoveListener(Close);
-        }        
+        }
 
         void Close()
         {

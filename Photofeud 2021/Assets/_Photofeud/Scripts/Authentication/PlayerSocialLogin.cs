@@ -1,25 +1,19 @@
 using Photofeud.Error;
 using Photofeud.Loading;
 using System;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Photofeud.Authentication
 {
-    public class PlayerLogin : MonoBehaviour
+    public class PlayerSocialLogin : MonoBehaviour
     {
-        [SerializeField] TMP_InputField email;
-        [SerializeField] TMP_InputField password;
-        [SerializeField] Button login;
-
-        PlayerLoginProcessor _processor;
+        PlayerSocialLoginProcessor _processor;
         IErrorHandler _errorHandler;
         ILoader _loader;
 
         void Awake()
         {
-            _processor = new PlayerLoginProcessor(GetComponent<IPlayerLoginService>());
+            _processor = new PlayerSocialLoginProcessor(GetComponent<IPlayerSocialLoginService>());
             _errorHandler = GetComponent<IErrorHandler>();
             _loader = GetComponent<ILoader>();
         }
@@ -36,18 +30,20 @@ namespace Photofeud.Authentication
             _processor.PlayerAuthenticationFailed -= PlayerAuthenticationFailed;
         }
 
-        public void OnInputValueChanged()
+        public void LoginGoogle()
         {
-            var hasEmail = !string.IsNullOrEmpty(email.text);
-            var hasPassword = !string.IsNullOrEmpty(password.text);
-
-            login.interactable = hasEmail && hasPassword;
+            Login(SocialLoginProvider.Google);
         }
 
-        public void Login()
+        public void LoginFacebook()
+        {
+            Login(SocialLoginProvider.Facebook);
+        }
+
+        void Login(SocialLoginProvider provider)
         {
             _loader.Load();
-            _processor.LoginPlayer(email.text, password.text);
+            _processor.LoginPlayer(provider);
         }
 
         void PlayerAuthenticated(object sender, EventArgs e)

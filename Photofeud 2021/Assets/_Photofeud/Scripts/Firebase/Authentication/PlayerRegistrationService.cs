@@ -1,11 +1,11 @@
 using Firebase;
 using Firebase.Auth;
-using Photofeud.Abstractions;
 using Photofeud.Authentication;
+using Photofeud.Translation;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Photofeud.Firebase
+namespace Photofeud.Firebase.Authentication
 {
     public class PlayerRegistrationService : MonoBehaviour, IPlayerRegistrationService
     {

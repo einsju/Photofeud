@@ -1,4 +1,5 @@
-using Photofeud.Abstractions;
+using Photofeud.Error;
+using Photofeud.Loading;
 using System;
 using TMPro;
 using UnityEngine;
@@ -26,14 +27,14 @@ namespace Photofeud.Authentication
 
         void OnEnable()
         {
-            _processor.PlayerRegistrationSucceeded += PlayerRegistrationSucceeded;
-            _processor.PlayerRegistrationFailed += PlayerRegistrationFailed;
+            _processor.PlayerAuthenticated += PlayerAuthenticated;
+            _processor.PlayerAuthenticationFailed += PlayerAuthenticationFailed;
         }
 
         void OnDisable()
         {
-            _processor.PlayerRegistrationSucceeded -= PlayerRegistrationSucceeded;
-            _processor.PlayerRegistrationFailed -= PlayerRegistrationFailed;
+            _processor.PlayerAuthenticated -= PlayerAuthenticated;
+            _processor.PlayerAuthenticationFailed -= PlayerAuthenticationFailed;
         }
 
         public void OnInputValueChanged()
@@ -51,12 +52,12 @@ namespace Photofeud.Authentication
             _processor.RegisterPlayer(email.text, password.text);
         }
 
-        void PlayerRegistrationSucceeded(object sender, EventArgs e)
+        void PlayerAuthenticated(object sender, EventArgs e)
         {
             SceneNavigator.LoadScene(Scene.Main);
         }
 
-        void PlayerRegistrationFailed(object sender, string error)
+        void PlayerAuthenticationFailed(object sender, string error)
         {
             _loader.Stop();
             _errorHandler.HandleError(error);
