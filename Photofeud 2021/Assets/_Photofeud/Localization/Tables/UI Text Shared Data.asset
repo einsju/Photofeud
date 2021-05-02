@@ -43,6 +43,18 @@ MonoBehaviour:
     m_Key: no-account-yet
     m_Metadata:
       m_Items: []
+  - m_Id: 2692680112136192
+    m_Key: sign-in-email
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2692972773892096
+    m_Key: sign-in-facebook
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2693052130123776
+    m_Key: sign-in-google
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

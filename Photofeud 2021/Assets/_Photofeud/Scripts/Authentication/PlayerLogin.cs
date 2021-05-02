@@ -17,11 +17,17 @@ namespace Photofeud.Authentication
         IErrorHandler _errorHandler;
         ILoader _loader;
 
+        CanvasGroup _loginButtonCanvasGroup;
+        float _loginCanvasGroupAlpha;
+
         void Awake()
         {
             _processor = new PlayerLoginProcessor(GetComponent<IPlayerLoginService>());
             _errorHandler = GetComponent<IErrorHandler>();
             _loader = GetComponent<ILoader>();
+
+            _loginButtonCanvasGroup = login.GetComponent<CanvasGroup>();
+            _loginCanvasGroupAlpha = _loginButtonCanvasGroup.alpha;
         }
 
         void OnEnable()
@@ -42,6 +48,7 @@ namespace Photofeud.Authentication
             var hasPassword = !string.IsNullOrEmpty(password.text);
 
             login.interactable = hasEmail && hasPassword;
+            _loginButtonCanvasGroup.alpha = login.interactable ? 1f : _loginCanvasGroupAlpha;
         }
 
         public void Login()

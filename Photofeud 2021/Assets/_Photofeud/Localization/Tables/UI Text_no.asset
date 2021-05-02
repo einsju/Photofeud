@@ -39,11 +39,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3409043513344
-    m_Localized: eller logg inn med
+    m_Localized: ... eller ...
     m_Metadata:
       m_Items: []
   - m_Id: 3641575727104
     m_Localized: Ingen konto? Registrer deg her
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2692680112136192
+    m_Localized: Logg inn med epost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2692972773892096
+    m_Localized: Logg inn med Facebook
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2693052130123776
+    m_Localized: Logg inn med Google
     m_Metadata:
       m_Items: []
   references:

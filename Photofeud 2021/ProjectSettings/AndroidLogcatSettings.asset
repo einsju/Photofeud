@@ -3,64 +3,58 @@
     "m_SelectedPackage": {
         "deviceId": "LHS0218A10002422",
         "name": "com.einarsen.photofeud",
-        "processId": 7451,
-        "exited": true
+        "processId": 26924,
+        "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "LHS0218A10002422",
-            "name": "com.huawei.android.launcher",
-            "processId": 2817,
+            "name": "com.einarsen.photofeud",
+            "processId": 25094,
+            "exited": true
+        },
+        {
+            "deviceId": "LHS0218A10002422",
+            "name": "com.einarsen.photofeud",
+            "processId": 331,
+            "exited": true
+        },
+        {
+            "deviceId": "LHS0218A10002422",
+            "name": "com.einarsen.photofeud",
+            "processId": 7860,
+            "exited": true
+        },
+        {
+            "deviceId": "LHS0218A10002422",
+            "name": "com.einarsen.photofeud",
+            "processId": 10033,
+            "exited": true
+        },
+        {
+            "deviceId": "LHS0218A10002422",
+            "name": "com.einarsen.photofeud",
+            "processId": 11059,
+            "exited": true
+        },
+        {
+            "deviceId": "LHS0218A10002422",
+            "name": "com.einarsen.photofeud",
+            "processId": 23076,
             "exited": false
         },
         {
             "deviceId": "LHS0218A10002422",
             "name": "com.einarsen.photofeud",
-            "processId": 11066,
-            "exited": true
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 11828,
-            "exited": true
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 12932,
-            "exited": true
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 15919,
-            "exited": true
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 18866,
-            "exited": true
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.android.chrome",
-            "processId": 7749,
+            "processId": 25045,
             "exited": false
         },
         {
             "deviceId": "LHS0218A10002422",
             "name": "com.einarsen.photofeud",
-            "processId": 5808,
-            "exited": true
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 7451,
-            "exited": true
+            "processId": 26924,
+            "exited": false
         }
     ],
     "m_Tags": {

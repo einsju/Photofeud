@@ -18,11 +18,17 @@ namespace Photofeud.Authentication
         IErrorHandler _errorHandler;
         ILoader _loader;
 
+        CanvasGroup _registerButtonCanvasGroup;
+        float _registerCanvasGroupAlpha;
+
         void Awake()
         {
             _processor = new PlayerRegistrationProcessor(GetComponent<IPlayerRegistrationService>());
             _errorHandler = GetComponent<IErrorHandler>();
             _loader = GetComponent<ILoader>();
+
+            _registerButtonCanvasGroup = register.GetComponent<CanvasGroup>();
+            _registerCanvasGroupAlpha = _registerButtonCanvasGroup.alpha;
         }
 
         void OnEnable()
@@ -44,6 +50,7 @@ namespace Photofeud.Authentication
             var hasMatchingPasswords = password.text == repeatPassword.text;
 
             register.interactable = hasEmail && hasPassword && hasMatchingPasswords;
+            _registerButtonCanvasGroup.alpha = register.interactable ? 1f : _registerCanvasGroupAlpha;
         }
 
         public void Register()

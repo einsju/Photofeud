@@ -39,11 +39,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3409043513344
-    m_Localized: or login with
+    m_Localized: ... or ...
     m_Metadata:
       m_Items: []
   - m_Id: 3641575727104
     m_Localized: No account yet? Sign up here
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2692680112136192
+    m_Localized: Sign in with email
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2692972773892096
+    m_Localized: Sign in with Facebook
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2693052130123776
+    m_Localized: Sign in with Google
     m_Metadata:
       m_Items: []
   references:
