@@ -1,4 +1,6 @@
-﻿namespace Photofeud.Authentication
+﻿using Photofeud.Profile;
+
+namespace Photofeud.Authentication
 {
     public class AuthenticationResult
     {

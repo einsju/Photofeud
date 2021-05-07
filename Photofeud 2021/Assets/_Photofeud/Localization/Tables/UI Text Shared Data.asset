@@ -55,6 +55,10 @@ MonoBehaviour:
     m_Key: sign-in-google
     m_Metadata:
       m_Items: []
+  - m_Id: 5064605593493504
+    m_Key: profile
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

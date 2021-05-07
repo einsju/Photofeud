@@ -1,6 +1,7 @@
 using Firebase;
 using Firebase.Auth;
 using Photofeud.Authentication;
+using Photofeud.Profile;
 using Photofeud.Translation;
 using System.Threading.Tasks;
 using UnityEngine;

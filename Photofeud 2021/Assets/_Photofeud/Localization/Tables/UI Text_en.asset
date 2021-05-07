@@ -58,5 +58,9 @@ MonoBehaviour:
     m_Localized: Sign in with Google
     m_Metadata:
       m_Items: []
+  - m_Id: 5064605593493504
+    m_Localized: Profile & statistics
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

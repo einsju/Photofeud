@@ -1,7 +1,7 @@
 using Moq;
 using NUnit.Framework;
-using Photofeud;
 using Photofeud.Authentication;
+using Photofeud.Profile;
 
 public class PlayerSocialLoginProcessorTests
 {
