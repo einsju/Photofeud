@@ -1,6 +1,5 @@
-using Photofeud.Loading;
+using Photofeud.Utility;
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,14 +7,14 @@ namespace Photofeud
 {
     public class SceneNavigator : MonoBehaviour
     {
-        public static SceneNavigator Instance;
+        [SerializeField] Animator transition;
+        [SerializeField] float transitionTime = 0.5f;
 
-        ILoader _loader;
+        public static SceneNavigator Instance;
 
         void Awake()
         {
             Instance = this;
-            _loader = FindObjectsOfType<MonoBehaviour>().OfType<ILoader>().FirstOrDefault();
         }
 
         public static void LoadScene(string scene)
@@ -23,24 +22,11 @@ namespace Photofeud
             Instance.StartCoroutine(Instance.LoadSceneAfterDelay(scene));
         }
 
-        public static void GoBack(string scene)
-        {
-            SceneManager.LoadScene(scene);
-        }
-
         IEnumerator LoadSceneAfterDelay(string scene)
         {
-            _loader.Load();
-            yield return new WaitForSeconds(1f);
+            transition.SetTrigger(Triggers.FadeOut);
+            yield return new WaitForSeconds(transitionTime);
             SceneManager.LoadScene(scene);
         }
-    }
-
-    public class Scene
-    {
-        public const string Game = "Game";
-        public const string Main = "Home";
-        public const string Leaderboard = "Leaderboard";
-        public const string Login = "Sign In";
     }
 }

@@ -1,5 +1,6 @@
 using Photofeud.Error;
 using Photofeud.Loading;
+using Photofeud.Utility;
 using System;
 using TMPro;
 using UnityEngine;
@@ -61,7 +62,7 @@ namespace Photofeud.Authentication
 
         void PlayerAuthenticated(object sender, EventArgs e)
         {
-            SceneNavigator.LoadScene(Scene.Main);
+            SceneNavigator.LoadScene(Scenes.Main);
         }
 
         void PlayerAuthenticationFailed(object sender, string error)

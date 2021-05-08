@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "LHS0218A10002422",
         "name": "com.einarsen.photofeud",
-        "processId": 26924,
+        "processId": 16457,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -54,6 +54,30 @@
             "deviceId": "LHS0218A10002422",
             "name": "com.einarsen.photofeud",
             "processId": 26924,
+            "exited": false
+        },
+        {
+            "deviceId": "LHS0218A10002422",
+            "name": "com.einarsen.photofeud",
+            "processId": 31050,
+            "exited": false
+        },
+        {
+            "deviceId": "LHS0218A10002422",
+            "name": "com.einarsen.photofeud",
+            "processId": 7408,
+            "exited": false
+        },
+        {
+            "deviceId": "LHS0218A10002422",
+            "name": "com.einarsen.photofeud",
+            "processId": 13855,
+            "exited": false
+        },
+        {
+            "deviceId": "LHS0218A10002422",
+            "name": "com.einarsen.photofeud",
+            "processId": 16457,
             "exited": false
         }
     ],
