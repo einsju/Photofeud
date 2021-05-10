@@ -59,6 +59,26 @@ MonoBehaviour:
     m_Key: profile
     m_Metadata:
       m_Items: []
+  - m_Id: 5557406659764224
+    m_Key: settings-sound-effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5557509650898944
+    m_Key: settings-vibration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5557572200554496
+    m_Key: settings-privacy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5557686117851136
+    m_Key: settings-new-password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5557757790117888
+    m_Key: settings-sign-out
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -43,7 +43,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3641575727104
-    m_Localized: No account yet? Sign up here
+    m_Localized: No account yet? Sign up here...
     m_Metadata:
       m_Items: []
   - m_Id: 2692680112136192
@@ -60,6 +60,26 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 5064605593493504
     m_Localized: Profile & statistics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5557406659764224
+    m_Localized: Sound effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5557509650898944
+    m_Localized: Vibration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5557572200554496
+    m_Localized: Terms of use and privacy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5557686117851136
+    m_Localized: New password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5557757790117888
+    m_Localized: Sign out
     m_Metadata:
       m_Items: []
   references:

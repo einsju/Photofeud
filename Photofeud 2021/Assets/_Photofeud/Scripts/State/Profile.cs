@@ -10,5 +10,10 @@ namespace Photofeud.State
         {
             Player = player;
         }
+
+        public static bool PlayerIsSignedIn()
+        {
+            return Player != null;
+        }
     }
 }
