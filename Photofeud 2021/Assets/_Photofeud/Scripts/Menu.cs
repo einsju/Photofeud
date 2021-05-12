@@ -21,8 +21,8 @@ namespace Photofeud
         void Awake()
         {
             _transition = GetComponent<Animator>();
-            _hasAudio = Settings.HasAudio();
-            _hasVibration = Settings.HasVibration();
+            _hasAudio = Settings.HasAudio;
+            _hasVibration = Settings.HasVibration;
             AudioListener.pause = !_hasAudio;
         }
 

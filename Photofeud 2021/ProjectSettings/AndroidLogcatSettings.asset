@@ -3,172 +3,58 @@
     "m_SelectedPackage": {
         "deviceId": "LHS0218A10002422",
         "name": "com.einarsen.photofeud",
-        "processId": 10041,
-        "exited": true
+        "processId": 29414,
+        "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "LHS0218A10002422",
             "name": "com.einarsen.photofeud",
-            "processId": 25094,
-            "exited": true
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 331,
-            "exited": true
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 7860,
-            "exited": true
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 10033,
-            "exited": true
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 11059,
-            "exited": true
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 23076,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 25045,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 26924,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 31050,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 7408,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 13855,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 16457,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 19266,
-            "exited": true
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 26339,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 28624,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 30031,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 31496,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 1552,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 7634,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 11390,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 14102,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 15389,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 16788,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 18104,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
             "processId": 18926,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "LHS0218A10002422",
             "name": "com.einarsen.photofeud",
             "processId": 26632,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "LHS0218A10002422",
             "name": "com.einarsen.photofeud",
             "processId": 10041,
             "exited": true
+        },
+        {
+            "deviceId": "LHS0218A10002422",
+            "name": "com.einarsen.photofeud",
+            "processId": 25066,
+            "exited": true
+        },
+        {
+            "deviceId": "LHS0218A10002422",
+            "name": "com.einarsen.photofeud",
+            "processId": 27092,
+            "exited": true
+        },
+        {
+            "deviceId": "LHS0218A10002422",
+            "name": "com.einarsen.photofeud",
+            "processId": 22807,
+            "exited": true
+        },
+        {
+            "deviceId": "LHS0218A10002422",
+            "name": "com.einarsen.photofeud",
+            "processId": 23911,
+            "exited": false
+        },
+        {
+            "deviceId": "LHS0218A10002422",
+            "name": "com.einarsen.photofeud",
+            "processId": 29414,
+            "exited": false
         }
     ],
     "m_Tags": {
