@@ -1,31 +1,13 @@
 {
     "m_SelectedDeviceId": "LHS0218A10002422",
     "m_SelectedPackage": {
-        "deviceId": "LHS0218A10002422",
-        "name": "com.einarsen.photofeud",
-        "processId": 29414,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 18926,
-            "exited": true
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 26632,
-            "exited": true
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 10041,
-            "exited": true
-        },
         {
             "deviceId": "LHS0218A10002422",
             "name": "com.einarsen.photofeud",
@@ -48,12 +30,18 @@
             "deviceId": "LHS0218A10002422",
             "name": "com.einarsen.photofeud",
             "processId": 23911,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "LHS0218A10002422",
             "name": "com.einarsen.photofeud",
             "processId": 29414,
+            "exited": true
+        },
+        {
+            "deviceId": "LHS0218A10002422",
+            "name": "com.huawei.android.launcher",
+            "processId": 2866,
             "exited": false
         }
     ],
