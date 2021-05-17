@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Photofeud/Scenes/Main.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Photofeud/Scenes/Sign In.unity
     guid: 6f55d9ea6d9d54145a8230b537bf6206
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Photofeud/Scenes/Sign In With Email.unity
     guid: afceb960a4908e94e8c2bc934feb43ae
   - enabled: 1
