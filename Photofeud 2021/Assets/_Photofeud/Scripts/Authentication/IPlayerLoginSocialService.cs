@@ -2,7 +2,7 @@
 
 namespace Photofeud.Authentication
 {
-    public interface IPlayerSocialLoginService
+    public interface IPlayerLoginSocialService
     {
         Task<AuthenticationResult> Login(SocialLoginProvider provider = SocialLoginProvider.Google);
     }

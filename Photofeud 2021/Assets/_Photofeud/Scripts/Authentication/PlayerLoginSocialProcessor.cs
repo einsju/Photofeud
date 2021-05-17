@@ -2,11 +2,11 @@
 
 namespace Photofeud.Authentication
 {
-    public class PlayerSocialLoginProcessor : PlayerAuthenticationProcessor
+    public class PlayerLoginSocialProcessor : PlayerAuthenticationProcessor
     {
-        IPlayerSocialLoginService _playerLoginService;
+        IPlayerLoginSocialService _playerLoginService;
 
-        public PlayerSocialLoginProcessor(IPlayerSocialLoginService playerLoginService)
+        public PlayerLoginSocialProcessor(IPlayerLoginSocialService playerLoginService)
         {
             _playerLoginService = playerLoginService;
         }

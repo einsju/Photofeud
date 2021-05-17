@@ -17,7 +17,7 @@ namespace Photofeud.Firebase
             var user = FirebaseAuth.DefaultInstance.CurrentUser;
             if (user is null) return null;
 
-            return new Player(user.UserId, user.DisplayName, user.Email);
+            return new Player(user.UserId, user.DisplayName, user.Email, user.IsAnonymous);
         }
     }
 }

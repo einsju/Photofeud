@@ -6,14 +6,16 @@
         public string Avatar { get; private set; }
         public string DisplayName { get; private set; }
         public string Email { get; }
+        public bool IsAnonymous { get; }
 
-        public string ScreenDisplayName => !string.IsNullOrEmpty(DisplayName) ? DisplayName : Email;
+        public string ScreenDisplayName => !IsAnonymous ? !string.IsNullOrEmpty(DisplayName) ? DisplayName : Email : $"Guest#{UserId.Substring(0, 10)}";
 
-        public Player(string userId, string displayName, string email)
+        public Player(string userId, string displayName, string email, bool isAnonymous = false)
         {
             UserId = userId;
             DisplayName = displayName;
             Email = email;
+            IsAnonymous = isAnonymous;
             
             EnforceAvatarRules();
         }

@@ -6,15 +6,15 @@ using UnityEngine;
 
 namespace Photofeud.Authentication
 {
-    public class PlayerSocialLogin : MonoBehaviour
+    public class PlayerLoginGuest : MonoBehaviour
     {
-        PlayerSocialLoginProcessor _processor;
+        PlayerLoginGuestProcessor _processor;
         IErrorHandler _errorHandler;
         ILoader _loader;
 
         void Awake()
         {
-            _processor = new PlayerSocialLoginProcessor(GetComponent<IPlayerSocialLoginService>());
+            _processor = new PlayerLoginGuestProcessor(GetComponent<IPlayerLoginGuestService>());
             _errorHandler = GetComponent<IErrorHandler>();
             _loader = GetComponent<ILoader>();
         }
@@ -31,20 +31,10 @@ namespace Photofeud.Authentication
             _processor.PlayerAuthenticationFailed -= PlayerAuthenticationFailed;
         }
 
-        public void LoginGoogle()
-        {
-            Login(SocialLoginProvider.Google);
-        }
-
-        public void LoginFacebook()
-        {
-            Login(SocialLoginProvider.Facebook);
-        }
-
-        void Login(SocialLoginProvider provider)
+        public void Login()
         {
             _loader.Load();
-            _processor.LoginPlayer(provider);
+            _processor.LoginPlayerAsGuest();
         }
 
         void PlayerAuthenticated(object sender, EventArgs e)

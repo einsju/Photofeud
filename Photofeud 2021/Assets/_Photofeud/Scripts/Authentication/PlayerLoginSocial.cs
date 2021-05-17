@@ -2,33 +2,21 @@ using Photofeud.Error;
 using Photofeud.Loading;
 using Photofeud.Utility;
 using System;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Photofeud.Authentication
 {
-    public class PlayerLogin : MonoBehaviour
+    public class PlayerLoginSocial : MonoBehaviour
     {
-        [SerializeField] TMP_InputField email;
-        [SerializeField] TMP_InputField password;
-        [SerializeField] Button login;
-
-        PlayerLoginProcessor _processor;
+        PlayerLoginSocialProcessor _processor;
         IErrorHandler _errorHandler;
         ILoader _loader;
 
-        CanvasGroup _loginButtonCanvasGroup;
-        float _loginCanvasGroupAlpha;
-
         void Awake()
         {
-            _processor = new PlayerLoginProcessor(GetComponent<IPlayerLoginService>());
+            _processor = new PlayerLoginSocialProcessor(GetComponent<IPlayerLoginSocialService>());
             _errorHandler = GetComponent<IErrorHandler>();
             _loader = GetComponent<ILoader>();
-
-            _loginButtonCanvasGroup = login.GetComponent<CanvasGroup>();
-            _loginCanvasGroupAlpha = _loginButtonCanvasGroup.alpha;            
         }
 
         void OnEnable()
@@ -43,19 +31,20 @@ namespace Photofeud.Authentication
             _processor.PlayerAuthenticationFailed -= PlayerAuthenticationFailed;
         }
 
-        public void OnInputValueChanged()
+        public void LoginGoogle()
         {
-            var hasEmail = !string.IsNullOrEmpty(email.text);
-            var hasPassword = !string.IsNullOrEmpty(password.text);
-
-            login.interactable = hasEmail && hasPassword;
-            _loginButtonCanvasGroup.alpha = login.interactable ? 1f : _loginCanvasGroupAlpha;
+            Login(SocialLoginProvider.Google);
         }
 
-        public void Login()
+        public void LoginFacebook()
+        {
+            Login(SocialLoginProvider.Facebook);
+        }
+
+        void Login(SocialLoginProvider provider)
         {
             _loader.Load();
-            _processor.LoginPlayer(email.text, password.text);
+            _processor.LoginPlayer(provider);
         }
 
         void PlayerAuthenticated(object sender, EventArgs e)

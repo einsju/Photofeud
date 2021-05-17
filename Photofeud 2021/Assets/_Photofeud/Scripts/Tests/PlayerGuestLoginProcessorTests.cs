@@ -3,19 +3,17 @@ using NUnit.Framework;
 using Photofeud.Authentication;
 using Photofeud.Profile;
 
-public class PlayerSocialLoginProcessorTests
+public class PlayerGuestLoginProcessorTests
 {
-    readonly SocialLoginProvider _provider;
-    readonly PlayerLoginSocialProcessor _processor;
-    readonly Mock<IPlayerLoginSocialService> _playerLoginService;    
-    readonly Player _player;    
+    readonly PlayerLoginGuestProcessor _processor;
+    readonly Mock<IPlayerLoginGuestService> _playerLoginService;
+    readonly Player _player;
 
-    public PlayerSocialLoginProcessorTests()
+    public PlayerGuestLoginProcessorTests()
     {
-        _provider = SocialLoginProvider.Google;
-        _playerLoginService = new Mock<IPlayerLoginSocialService>();
-        _processor = new PlayerLoginSocialProcessor(_playerLoginService.Object);
-        _player = new Player("Wktb8xUwmyZCtqUF7qvAGXeWPCt2", "7r78", "sjur.einarsen@gmail.com");
+        _playerLoginService = new Mock<IPlayerLoginGuestService>();
+        _processor = new PlayerLoginGuestProcessor(_playerLoginService.Object);
+        _player = new Player("Wktb8xUwmyZCtqUF7qvAGXeWPCt2", "Guest", "player@guest.com");
     }
 
     [Test]
@@ -23,7 +21,7 @@ public class PlayerSocialLoginProcessorTests
     {
         var authenticationResult = new AuthenticationResult();
 
-        _playerLoginService.Setup(x => x.Login(_provider))
+        _playerLoginService.Setup(x => x.Login())
             .Returns(async () => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Success });
 
         var raised = false;
@@ -33,7 +31,7 @@ public class PlayerSocialLoginProcessorTests
             raised = true;
         };
 
-        _processor.LoginPlayer(_provider);
+        _processor.LoginPlayerAsGuest();
 
         Assert.IsTrue(raised);
     }
@@ -43,7 +41,7 @@ public class PlayerSocialLoginProcessorTests
     {
         var authenticationResult = new AuthenticationResult();
 
-        _playerLoginService.Setup(x => x.Login(_provider))
+        _playerLoginService.Setup(x => x.Login())
             .Returns(async () => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Error });
 
         var raised = false;
@@ -53,7 +51,7 @@ public class PlayerSocialLoginProcessorTests
             raised = true;
         };
 
-        _processor.LoginPlayer(_provider);
+        _processor.LoginPlayerAsGuest();
 
         Assert.IsTrue(raised);
     }
@@ -63,10 +61,10 @@ public class PlayerSocialLoginProcessorTests
     {
         var authenticationResult = new AuthenticationResult();
 
-        _playerLoginService.Setup(x => x.Login(_provider))
+        _playerLoginService.Setup(x => x.Login())
             .Returns(async () => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Success, Player = _player });
 
-        _processor.LoginPlayer(_provider);
+        _processor.LoginPlayerAsGuest();
 
         Assert.AreSame(authenticationResult.Player, _player);
         Assert.IsNotNull(authenticationResult.Player);
@@ -77,10 +75,10 @@ public class PlayerSocialLoginProcessorTests
     {
         var authenticationResult = new AuthenticationResult();
 
-        _playerLoginService.Setup(x => x.Login(_provider))
+        _playerLoginService.Setup(x => x.Login())
             .Returns(async () => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Error });
 
-        _processor.LoginPlayer(_provider);
+        _processor.LoginPlayerAsGuest();
 
         Assert.AreNotSame(authenticationResult.Player, _player);
         Assert.IsNull(authenticationResult.Player);
