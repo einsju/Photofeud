@@ -82,5 +82,17 @@ MonoBehaviour:
     m_Localized: Sign out
     m_Metadata:
       m_Items: []
+  - m_Id: 8167276760260608
+    m_Localized: Your game name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8783726818615296
+    m_Localized: Create account
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8783818749370368
+    m_Localized: Play as guest
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

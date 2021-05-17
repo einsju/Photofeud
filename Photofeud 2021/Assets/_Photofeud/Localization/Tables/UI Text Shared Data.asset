@@ -79,6 +79,18 @@ MonoBehaviour:
     m_Key: settings-sign-out
     m_Metadata:
       m_Items: []
+  - m_Id: 8167276760260608
+    m_Key: display-name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8783726818615296
+    m_Key: create-account
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8783818749370368
+    m_Key: play-as-guest
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

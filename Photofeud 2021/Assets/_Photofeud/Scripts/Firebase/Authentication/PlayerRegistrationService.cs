@@ -17,7 +17,19 @@ namespace Photofeud.Firebase.Authentication
             _translator = GetComponent<ITranslator>();
         }
 
-        public async Task<AuthenticationResult> Register(string email, string password)
+        public async Task<AuthenticationResult> Register(string displayName, string email, string password)
+        {
+            var result = await CreateUserWithEmailAndPassword(email, password);
+            
+            if (result.Code == AuthenticationResultCode.Error || FirebaseAuth.DefaultInstance.CurrentUser is null)
+                return result;
+
+            result = await UpdateUserProfile(displayName);
+
+            return result;
+        }
+
+        async Task<AuthenticationResult> CreateUserWithEmailAndPassword(string email, string password)
         {
             var result = new AuthenticationResult { Code = AuthenticationResultCode.Success };
 
@@ -25,18 +37,38 @@ namespace Photofeud.Firebase.Authentication
             {
                 if (task.IsCanceled || task.IsFaulted)
                 {
-                    var firebaseException = task.Exception.GetBaseException() as FirebaseException;
+                    result = FirebaseErrorResult(task.Exception.GetBaseException() as FirebaseException);
+                    return;
+                }
+            });
 
-                    result.Code = AuthenticationResultCode.Error;
-                    result.ErrorMessage = _translator.Translate($"{firebaseException.ErrorCode}");
+            return result;
+        }
+
+        async Task<AuthenticationResult> UpdateUserProfile(string displayName)
+        {
+            var result = new AuthenticationResult { Code = AuthenticationResultCode.Success };
+            var profile = new UserProfile { DisplayName = displayName };
+
+            await FirebaseAuth.DefaultInstance.CurrentUser.UpdateUserProfileAsync(profile).ContinueWith(task =>
+            {
+                if (task.IsCanceled || task.IsFaulted)
+                {
+                    result = FirebaseErrorResult(task.Exception.GetBaseException() as FirebaseException);
                     return;
                 }
 
-                var user = task.Result;
+                var user = FirebaseAuth.DefaultInstance.CurrentUser;
                 result.Player = new Player(user.UserId, user.DisplayName, user.Email);
             });
 
             return result;
+        }
+
+        AuthenticationResult FirebaseErrorResult(FirebaseException exception)
+        {
+            var firebaseException = exception.GetBaseException() as FirebaseException;
+            return new AuthenticationResult { Code = AuthenticationResultCode.Error, ErrorMessage = _translator.Translate($"{firebaseException.ErrorCode}") };
         }
     }
 }

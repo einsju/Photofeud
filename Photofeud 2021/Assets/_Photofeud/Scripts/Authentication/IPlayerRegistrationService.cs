@@ -4,6 +4,6 @@ namespace Photofeud.Authentication
 {
     public interface IPlayerRegistrationService
     {
-        Task<AuthenticationResult> Register(string email, string password);
+        Task<AuthenticationResult> Register(string displayName, string email, string password);
     }
 }

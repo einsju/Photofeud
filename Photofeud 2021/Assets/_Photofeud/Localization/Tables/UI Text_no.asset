@@ -82,5 +82,17 @@ MonoBehaviour:
     m_Localized: Logg ut
     m_Metadata:
       m_Items: []
+  - m_Id: 8167276760260608
+    m_Localized: Ditt spillnavn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8783726818615296
+    m_Localized: Opprett konto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8783818749370368
+    m_Localized: Spill som gjest
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

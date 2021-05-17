@@ -5,6 +5,7 @@ namespace Photofeud.Authentication
 {
     public class PlayerRegistrationProcessor : PlayerAuthenticationProcessor
     {
+        const string InvalidDisplayName = "Invalid Email";
         const string InvalidEmail = "Invalid Email";
         const string InvalidPassword = "Invalid Password";
 
@@ -17,14 +18,15 @@ namespace Photofeud.Authentication
             _playerRegistrationService = playerRegistrationService;
         }
 
-        public void RegisterPlayer(string email, string password)
+        public void RegisterPlayer(string displayName, string email, string password)
         {
-            ValidateSignUpInput(email, password);
-            _ = Register(email, password);
+            ValidateSignUpInput(displayName, email, password);
+            _ = Register(displayName, email, password);
         }
 
-        void ValidateSignUpInput(string email, string password)
+        void ValidateSignUpInput(string displayName, string email, string password)
         {
+            ThrowArgumentNullExceptionOnInvalidData(displayName, nameof(displayName), InvalidDisplayName);
             ThrowArgumentNullExceptionOnInvalidData(email, nameof(email), InvalidEmail);
             ThrowArgumentNullExceptionOnInvalidData(password, nameof(password), InvalidPassword);
         }
@@ -35,9 +37,9 @@ namespace Photofeud.Authentication
                 throw new ArgumentNullException(paramName, message);
         }
 
-        async Task Register(string email, string password)
+        async Task Register(string displayName, string email, string password)
         {
-            var result = await _playerRegistrationService.Register(email, password);
+            var result = await _playerRegistrationService.Register(displayName, email, password);
 
             if (result.Code != AuthenticationResultCode.Success)
             {

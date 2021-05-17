@@ -10,6 +10,8 @@ namespace Photofeud.Authentication
 {
     public class PlayerRegistration : MonoBehaviour
     {
+        [SerializeField] Image avatar;
+        [SerializeField] TMP_InputField displayName;
         [SerializeField] TMP_InputField email;
         [SerializeField] TMP_InputField password;
         [SerializeField] TMP_InputField repeatPassword;
@@ -46,18 +48,20 @@ namespace Photofeud.Authentication
 
         public void OnInputValueChanged()
         {
+            var hasDisplayName = !string.IsNullOrEmpty(displayName.text);
             var hasEmail = !string.IsNullOrEmpty(email.text);
             var hasPassword = !string.IsNullOrEmpty(password.text);
             var hasMatchingPasswords = password.text == repeatPassword.text;
 
-            register.interactable = hasEmail && hasPassword && hasMatchingPasswords;
+            register.interactable = hasDisplayName && hasEmail && hasPassword && hasMatchingPasswords;
             _registerButtonCanvasGroup.alpha = register.interactable ? 1f : _registerCanvasGroupAlpha;
         }
 
         public void Register()
         {
             _loader.Load();
-            _processor.RegisterPlayer(email.text, password.text);
+            var displayNameAndAvatar = $"{displayName.text};{avatar.sprite.name}";
+            _processor.RegisterPlayer(displayNameAndAvatar, email.text, password.text);
         }
 
         void PlayerAuthenticated(object sender, EventArgs e)
