@@ -9,30 +9,27 @@ using UnityEngine.UI;
 
 namespace Photofeud.Authentication
 {
-    public class PlayerRegistration : MonoBehaviour
+    public class Login : MonoBehaviour
     {
-        [SerializeField] Image avatar;
-        [SerializeField] TMP_InputField displayName;
         [SerializeField] TMP_InputField email;
         [SerializeField] TMP_InputField password;
-        [SerializeField] TMP_InputField repeatPassword;
-        [SerializeField] Button register;
+        [SerializeField] Button login;
 
-        PlayerRegistrationProcessor _processor;
+        LoginProcessor _processor;
         IErrorHandler _errorHandler;
         ILoader _loader;
 
-        CanvasGroup _registerButtonCanvasGroup;
-        float _registerCanvasGroupAlpha;
+        CanvasGroup _loginButtonCanvasGroup;
+        float _loginCanvasGroupAlpha;
 
         void Awake()
         {
-            _processor = new PlayerRegistrationProcessor(GetComponent<IPlayerRegistrationService>());
+            _processor = new LoginProcessor(GetComponent<ILoginService>());
             _errorHandler = GetComponent<IErrorHandler>();
             _loader = GetComponent<ILoader>();
 
-            _registerButtonCanvasGroup = register.GetComponent<CanvasGroup>();
-            _registerCanvasGroupAlpha = _registerButtonCanvasGroup.alpha;
+            _loginButtonCanvasGroup = login.GetComponent<CanvasGroup>();
+            _loginCanvasGroupAlpha = _loginButtonCanvasGroup.alpha;            
         }
 
         void OnEnable()
@@ -49,20 +46,17 @@ namespace Photofeud.Authentication
 
         public void OnInputValueChanged()
         {
-            var hasDisplayName = !string.IsNullOrEmpty(displayName.text);
             var hasEmail = !string.IsNullOrEmpty(email.text);
             var hasPassword = !string.IsNullOrEmpty(password.text);
-            var hasMatchingPasswords = password.text == repeatPassword.text;
 
-            register.interactable = hasDisplayName && hasEmail && hasPassword && hasMatchingPasswords;
-            _registerButtonCanvasGroup.alpha = register.interactable ? 1f : _registerCanvasGroupAlpha;
+            login.interactable = hasEmail && hasPassword;
+            _loginButtonCanvasGroup.alpha = login.interactable ? 1f : _loginCanvasGroupAlpha;
         }
 
-        public void Register()
+        public void SignIn()
         {
             _loader.Load();
-            var displayNameAndAvatar = $"{displayName.text};{avatar.sprite.name}";
-            _processor.RegisterPlayer(displayNameAndAvatar, email.text, password.text);
+            _processor.LoginPlayer(email.text, password.text);
         }
 
         void PlayerAuthenticated(object sender, EventArgs e)

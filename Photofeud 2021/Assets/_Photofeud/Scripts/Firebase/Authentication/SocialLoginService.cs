@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Photofeud.Firebase.Authentication
 {
-    public class PlayerLoginSocialService : MonoBehaviour, IPlayerLoginSocialService
+    public class SocialLoginService : MonoBehaviour, ISocialLoginService
     {
         ITranslator _translator;
 

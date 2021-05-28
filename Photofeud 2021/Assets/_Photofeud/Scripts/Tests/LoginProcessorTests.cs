@@ -5,22 +5,22 @@ using Photofeud.Authentication;
 using Photofeud.Profile;
 using System;
 
-public class PlayerLoginProcessorTests
+public class LoginProcessorTests
 {
     readonly string _email;
     readonly string _password;
 
-    readonly PlayerLoginProcessor _processor;
-    readonly Mock<IPlayerLoginService> _playerLoginService;
+    readonly LoginProcessor _processor;
+    readonly Mock<ILoginService> _loginService;
     readonly Player _player;
 
-    public PlayerLoginProcessorTests()
+    public LoginProcessorTests()
     {
         _email = "email@email.com";
         _password = "password";
 
-        _playerLoginService = new Mock<IPlayerLoginService>();
-        _processor = new PlayerLoginProcessor(_playerLoginService.Object);
+        _loginService = new Mock<ILoginService>();
+        _processor = new LoginProcessor(_loginService.Object);
         _player = new Player("Wktb8xUwmyZCtqUF7qvAGXeWPCt2", "7r78", _email);
     }
 
@@ -45,7 +45,7 @@ public class PlayerLoginProcessorTests
     {
         var authenticationResult = new AuthenticationResult();
 
-        _playerLoginService.Setup(x => x.Login(It.IsAny<string>(), It.IsAny<string>()))
+        _loginService.Setup(x => x.Login(It.IsAny<string>(), It.IsAny<string>()))
             .Returns<string, string>(async (x, y) => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Success });
 
         var raised = false;
@@ -65,7 +65,7 @@ public class PlayerLoginProcessorTests
     {
         var authenticationResult = new AuthenticationResult();
 
-        _playerLoginService.Setup(x => x.Login(It.IsAny<string>(), It.IsAny<string>()))
+        _loginService.Setup(x => x.Login(It.IsAny<string>(), It.IsAny<string>()))
             .Returns<string, string>(async (x, y) => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Error });
 
         var raised = false;
@@ -106,7 +106,7 @@ public class PlayerLoginProcessorTests
     {
         var authenticationResult = new AuthenticationResult();
 
-        _playerLoginService.Setup(x => x.Login(It.IsAny<string>(), It.IsAny<string>()))
+        _loginService.Setup(x => x.Login(It.IsAny<string>(), It.IsAny<string>()))
             .Returns<string, string>(async (x, y) => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Success, Player = _player });
 
         _processor.LoginPlayer(_email, _password);
@@ -120,7 +120,7 @@ public class PlayerLoginProcessorTests
     {
         var authenticationResult = new AuthenticationResult();
 
-        _playerLoginService.Setup(x => x.Login(It.IsAny<string>(), It.IsAny<string>()))
+        _loginService.Setup(x => x.Login(It.IsAny<string>(), It.IsAny<string>()))
             .Returns<string, string>(async (x, y) => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Error });
 
         _processor.LoginPlayer(_email, _password);

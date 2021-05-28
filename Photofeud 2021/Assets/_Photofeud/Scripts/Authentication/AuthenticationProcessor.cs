@@ -2,7 +2,7 @@ using System;
 
 namespace Photofeud.Authentication
 {
-    public abstract class PlayerAuthenticationProcessor
+    public abstract class AuthenticationProcessor
     {
         public event EventHandler PlayerAuthenticated;
         public event EventHandler<string> PlayerAuthenticationFailed;

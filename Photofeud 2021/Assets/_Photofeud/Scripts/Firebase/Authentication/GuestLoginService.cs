@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Photofeud
 {
-    public class PlayerLoginGuestService : MonoBehaviour, IPlayerLoginGuestService
+    public class GuestLoginService : MonoBehaviour, IGuestLoginService
     {
         ITranslator _translator;
 

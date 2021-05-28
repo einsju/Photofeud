@@ -4,28 +4,30 @@ using System.Threading.Tasks;
 
 namespace Photofeud.Authentication
 {
-    public class PlayerLoginProcessor : PlayerAuthenticationProcessor
+    public class RegistrationProcessor : AuthenticationProcessor
     {
+        const string InvalidDisplayName = "Invalid Email";
         const string InvalidEmail = "Invalid Email";
         const string InvalidPassword = "Invalid Password";
 
-        IPlayerLoginService _playerLoginService;
+        IRegistrationService _registrationService;
 
         bool IsFieldAssigned(string field) => !string.IsNullOrEmpty(field);
 
-        public PlayerLoginProcessor(IPlayerLoginService playerLoginService)
+        public RegistrationProcessor(IRegistrationService registrationService)
         {
-            _playerLoginService = playerLoginService;
+            _registrationService = registrationService;
         }
 
-        public void LoginPlayer(string email, string password)
+        public void RegisterPlayer(string displayName, string email, string password)
         {
-            ValidateSignInInput(email, password);
-            _ = Login(email, password);
+            ValidateSignUpInput(displayName, email, password);
+            _ = Register(displayName, email, password);
         }
 
-        void ValidateSignInInput(string email, string password)
+        void ValidateSignUpInput(string displayName, string email, string password)
         {
+            ThrowArgumentNullExceptionOnInvalidData(displayName, nameof(displayName), InvalidDisplayName);
             ThrowArgumentNullExceptionOnInvalidData(email, nameof(email), InvalidEmail);
             ThrowArgumentNullExceptionOnInvalidData(password, nameof(password), InvalidPassword);
         }
@@ -36,9 +38,9 @@ namespace Photofeud.Authentication
                 throw new ArgumentNullException(paramName, message);
         }
 
-        async Task Login(string email, string password)
+        async Task Register(string displayName, string email, string password)
         {
-            var result = await _playerLoginService.Login(email, password);
+            var result = await _registrationService.Register(displayName, email, password);
 
             if (result.Code != AuthenticationResultCode.Success)
             {

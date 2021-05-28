@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Photofeud.Abstractions.Authentication
 {
-    public interface IPlayerLoginSocialService
+    public interface ISocialLoginService
     {
         Task<AuthenticationResult> Login(SocialLoginProvider provider = SocialLoginProvider.Google);
     }

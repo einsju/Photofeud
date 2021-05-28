@@ -6,13 +6,13 @@ using System;
 
 namespace Photofeud
 {
-    public class PlayerLogoutProcessorTests
+    public class LogoutProcessorTests
     {
         //readonly PlayerLogoutProcessor _processor;
         //readonly Mock<IPlayerLoginService> _playerLoginService;
         //readonly Player _player;
 
-        public PlayerLogoutProcessorTests()
+        public LogoutProcessorTests()
         {
             //_email = "email@email.com";
             //_password = "password";

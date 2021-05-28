@@ -5,24 +5,24 @@ using Photofeud.Authentication;
 using Photofeud.Profile;
 using System;
 
-public class PlayerRegistrationProcessorTests
+public class RegistrationProcessorTests
 {
     readonly string _displayName;
     readonly string _email;
     readonly string _password;
 
-    readonly PlayerRegistrationProcessor _processor;
-    readonly Mock<IPlayerRegistrationService> _playerRegistrationService;
+    readonly RegistrationProcessor _processor;
+    readonly Mock<IRegistrationService> _registrationService;
     readonly Player _player;
 
-    public PlayerRegistrationProcessorTests()
+    public RegistrationProcessorTests()
     {
         _displayName = "7r78";
         _email = "email@email.com";
         _password = "password";
 
-        _playerRegistrationService = new Mock<IPlayerRegistrationService>();
-        _processor = new PlayerRegistrationProcessor(_playerRegistrationService.Object);
+        _registrationService = new Mock<IRegistrationService>();
+        _processor = new RegistrationProcessor(_registrationService.Object);
         _player = new Player("Wktb8xUwmyZCtqUF7qvAGXeWPCt2", _displayName, _email);
     }
 
@@ -55,7 +55,7 @@ public class PlayerRegistrationProcessorTests
     {
         var authenticationResult = new AuthenticationResult();
 
-        _playerRegistrationService.Setup(x => x.Register(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+        _registrationService.Setup(x => x.Register(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
             .Returns<string, string, string>(async (x, y, z) => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Success });
 
         var raised = false;
@@ -75,7 +75,7 @@ public class PlayerRegistrationProcessorTests
     {
         var authenticationResult = new AuthenticationResult();
 
-        _playerRegistrationService.Setup(x => x.Register(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+        _registrationService.Setup(x => x.Register(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
             .Returns<string, string, string>(async (x, y, z) => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Error });
 
         var raised = false;
@@ -117,7 +117,7 @@ public class PlayerRegistrationProcessorTests
     {
         var authenticationResult = new AuthenticationResult();
 
-        _playerRegistrationService.Setup(x => x.Register(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+        _registrationService.Setup(x => x.Register(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
             .Returns<string, string, string>(async (x, y, z) => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Success, Player = _player });
 
         _processor.RegisterPlayer(_displayName, _email, _password);
@@ -131,7 +131,7 @@ public class PlayerRegistrationProcessorTests
     {
         var authenticationResult = new AuthenticationResult();
 
-        _playerRegistrationService.Setup(x => x.Register(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+        _registrationService.Setup(x => x.Register(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
             .Returns<string, string, string>(async (x, y, z) => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Error });
 
         _processor.RegisterPlayer(_displayName, _email, _password);

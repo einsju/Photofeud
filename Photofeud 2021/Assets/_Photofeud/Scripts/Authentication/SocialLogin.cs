@@ -7,15 +7,15 @@ using UnityEngine;
 
 namespace Photofeud.Authentication
 {
-    public class PlayerLoginSocial : MonoBehaviour
+    public class SocialLogin : MonoBehaviour
     {
-        PlayerLoginSocialProcessor _processor;
+        SocialLoginProcessor _processor;
         IErrorHandler _errorHandler;
         ILoader _loader;
 
         void Awake()
         {
-            _processor = new PlayerLoginSocialProcessor(GetComponent<IPlayerLoginSocialService>());
+            _processor = new SocialLoginProcessor(GetComponent<ISocialLoginService>());
             _errorHandler = GetComponent<IErrorHandler>();
             _loader = GetComponent<ILoader>();
         }

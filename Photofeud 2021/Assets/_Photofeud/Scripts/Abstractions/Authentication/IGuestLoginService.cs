@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace Photofeud.Abstractions.Authentication
 {
-    public interface IPlayerLoginService
+    public interface IGuestLoginService
     {
-        Task<AuthenticationResult> Login(string email, string password);
+        Task<AuthenticationResult> Login();
     }
 }

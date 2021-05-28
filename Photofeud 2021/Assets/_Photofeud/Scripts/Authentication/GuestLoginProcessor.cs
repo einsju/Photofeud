@@ -3,13 +3,13 @@ using System.Threading.Tasks;
 
 namespace Photofeud.Authentication
 {
-    public class PlayerLoginGuestProcessor : PlayerAuthenticationProcessor
+    public class GuestLoginProcessor : AuthenticationProcessor
     {
-        IPlayerLoginGuestService _playerLoginGuestService;
+        IGuestLoginService _loginService;
 
-        public PlayerLoginGuestProcessor(IPlayerLoginGuestService playerLoginGuestService)
+        public GuestLoginProcessor(IGuestLoginService loginService)
         {
-            _playerLoginGuestService = playerLoginGuestService;
+            _loginService = loginService;
         }
 
         public void LoginPlayerAsGuest()
@@ -19,7 +19,7 @@ namespace Photofeud.Authentication
 
         async Task LoginAsGuest()
         {
-            var result = await _playerLoginGuestService.Login();
+            var result = await _loginService.Login();
 
             if (result.Code != AuthenticationResultCode.Success)
             {
