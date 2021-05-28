@@ -1,4 +1,4 @@
-namespace Photofeud.Loading
+namespace Photofeud.Abstractions.Loading
 {
     public interface ILoader
     {

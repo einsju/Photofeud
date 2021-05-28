@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Photofeud.Abstractions.Authentication;
+using System.Threading.Tasks;
 
 namespace Photofeud.Authentication
 {

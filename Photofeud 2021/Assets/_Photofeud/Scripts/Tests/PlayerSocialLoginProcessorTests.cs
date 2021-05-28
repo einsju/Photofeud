@@ -1,5 +1,6 @@
 using Moq;
 using NUnit.Framework;
+using Photofeud.Abstractions.Authentication;
 using Photofeud.Authentication;
 using Photofeud.Profile;
 
@@ -7,8 +8,8 @@ public class PlayerSocialLoginProcessorTests
 {
     readonly SocialLoginProvider _provider;
     readonly PlayerLoginSocialProcessor _processor;
-    readonly Mock<IPlayerLoginSocialService> _playerLoginService;    
-    readonly Player _player;    
+    readonly Mock<IPlayerLoginSocialService> _playerLoginService;
+    readonly Player _player;
 
     public PlayerSocialLoginProcessorTests()
     {

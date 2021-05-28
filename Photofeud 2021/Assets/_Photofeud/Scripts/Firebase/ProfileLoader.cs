@@ -1,5 +1,6 @@
 using Firebase;
 using Firebase.Auth;
+using Photofeud.Abstractions.Profile;
 using Photofeud.Profile;
 using UnityEngine;
 

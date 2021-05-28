@@ -1,5 +1,6 @@
 using Moq;
 using NUnit.Framework;
+using Photofeud.Abstractions.Authentication;
 using Photofeud.Authentication;
 using Photofeud.Profile;
 using System;

@@ -1,5 +1,6 @@
-using Photofeud.Error;
-using Photofeud.Loading;
+using Photofeud.Abstractions.Authentication;
+using Photofeud.Abstractions.Error;
+using Photofeud.Abstractions.Loading;
 using Photofeud.Utility;
 using System;
 using UnityEngine;

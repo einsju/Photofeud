@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,13 +6,19 @@ namespace Photofeud
     public class Avatar : MonoBehaviour
     {
         [SerializeField] Image avatar;
-        [SerializeField] List<Sprite> avatars;
         [SerializeField] Button previous;
         [SerializeField] Button next;
         [SerializeField] Color enabledColor;
         [SerializeField] Color disabledColor;
 
+        Sprite[] _avatars;
         int _index = 0;
+
+        void Awake()
+        {
+            _avatars = Resources.LoadAll<Sprite>("Avatars");
+            SetAvatar();
+        }
 
         public void OnPrevious()
         {
@@ -22,7 +27,7 @@ namespace Photofeud
             UpdateButtons();
 
         }
-        
+
         public void OnNext()
         {
             _index++;
@@ -32,14 +37,14 @@ namespace Photofeud
 
         void SetAvatar()
         {
-            avatar.sprite = avatars[_index];
+            avatar.sprite = _avatars[_index];
         }
 
         void UpdateButtons()
         {
             previous.interactable = _index > 0;
             previous.image.color = previous.interactable ? enabledColor : disabledColor;
-            next.interactable = _index < avatars.Count - 1;
+            next.interactable = _index < _avatars.Length - 1;
             next.image.color = next.interactable ? enabledColor : disabledColor;
         }
     }

@@ -318,7 +318,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Photofeud
+  m_text: Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -345,8 +345,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 75
-  m_fontSizeBase: 75
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -625,9 +625,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 125}
-  m_SizeDelta: {x: 0, y: 250}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 200}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &7195575359590768819
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -831,22 +831,22 @@ PrefabInstance:
     - target: {fileID: 2709421384872230298, guid: 30c79fbaabf6da24d9a12be6a69dda10,
         type: 3}
       propertyPath: m_Color.a
-      value: 0.007843138
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2709421384872230298, guid: 30c79fbaabf6da24d9a12be6a69dda10,
         type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.9607843
       objectReference: {fileID: 0}
     - target: {fileID: 2709421384872230298, guid: 30c79fbaabf6da24d9a12be6a69dda10,
         type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.9607843
       objectReference: {fileID: 0}
     - target: {fileID: 2709421384872230298, guid: 30c79fbaabf6da24d9a12be6a69dda10,
         type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.9607843
       objectReference: {fileID: 0}
     - target: {fileID: 3244973691084960706, guid: 30c79fbaabf6da24d9a12be6a69dda10,
         type: 3}

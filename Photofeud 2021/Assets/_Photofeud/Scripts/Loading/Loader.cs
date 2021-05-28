@@ -1,4 +1,4 @@
-using Photofeud.Loading;
+using Photofeud.Abstractions.Loading;
 using UnityEngine;
 
 namespace Photofeud

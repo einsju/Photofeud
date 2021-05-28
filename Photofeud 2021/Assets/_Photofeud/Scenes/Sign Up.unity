@@ -197,8 +197,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -37.5}
-  m_SizeDelta: {x: -150, y: -275}
+  m_AnchoredPosition: {x: 0, y: -30}
+  m_SizeDelta: {x: -150, y: -260}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &386265534
 GameObject:
@@ -1413,57 +1413,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   avatar: {fileID: 1019059194}
-  avatars:
-  - {fileID: 21300000, guid: 6d8df3cdbdedc744683a1e99367b4a8e, type: 3}
-  - {fileID: 21300000, guid: 24e0ca657ae8ddb4d9ff8289510e87c8, type: 3}
-  - {fileID: 21300000, guid: d03da97f4cb2e794a932b257bd366638, type: 3}
-  - {fileID: 21300000, guid: 188855a9c483da248a4b09a1f99cf064, type: 3}
-  - {fileID: 21300000, guid: 8ace57181b4f4824596c795c837e398f, type: 3}
-  - {fileID: 21300000, guid: b7c73f2aa963e5d4cba7a01364c53621, type: 3}
-  - {fileID: 21300000, guid: 311260a4bba7d114ea44e3124ca792fa, type: 3}
-  - {fileID: 21300000, guid: 85d894a5182eb9149b0c5a9f3edda385, type: 3}
-  - {fileID: 21300000, guid: 8335e193cab36f04ab420b490733c8b4, type: 3}
-  - {fileID: 21300000, guid: 87037df476f131b4ab7518d5d5e4400c, type: 3}
-  - {fileID: 21300000, guid: 46251ebcd13fcf74d867c9d83b971223, type: 3}
-  - {fileID: 21300000, guid: 8e30eac347c550d41be4696bf9d2ae5c, type: 3}
-  - {fileID: 21300000, guid: dfd5b980140ebb54faaacdeb2d3f861c, type: 3}
-  - {fileID: 21300000, guid: 734d485c18a157a4e94189bb94e972d0, type: 3}
-  - {fileID: 21300000, guid: 546cb95e2c6103b4196924f8617dd033, type: 3}
-  - {fileID: 21300000, guid: 78d53fe518488034099184f26d837278, type: 3}
-  - {fileID: 21300000, guid: 9559a8f7a8982f546a7dbc7805ea1140, type: 3}
-  - {fileID: 21300000, guid: f99ea5240ed5d7348888b5f80fff2609, type: 3}
-  - {fileID: 21300000, guid: 040f750eeea65c243b960db90c77cb73, type: 3}
-  - {fileID: 21300000, guid: cb5405e5b5263ac469486c734bfefab4, type: 3}
-  - {fileID: 21300000, guid: 55007dfbb28eac842a03be91cbca44ad, type: 3}
-  - {fileID: 21300000, guid: e90fa4724aad90b4d84f97f4c42ffb66, type: 3}
-  - {fileID: 21300000, guid: 8da3bdcac32cf05408469d40c65bc783, type: 3}
-  - {fileID: 21300000, guid: 137b15cbbb947ab499ce3460d0343472, type: 3}
-  - {fileID: 21300000, guid: fef81b0cea35d9147a1f596cc2230151, type: 3}
-  - {fileID: 21300000, guid: 709c016f77596af42b64337fab1e300c, type: 3}
-  - {fileID: 21300000, guid: d7a142256a7985048addfd1fa7e9fe50, type: 3}
-  - {fileID: 21300000, guid: fcb567261c492d140bf259d4c52fcec1, type: 3}
-  - {fileID: 21300000, guid: ca486198e9ff9e64694fbad34833f115, type: 3}
-  - {fileID: 21300000, guid: 4559cd0187e954c47b3b5b2e06bce383, type: 3}
-  - {fileID: 21300000, guid: 404d20ff56192034bbd01962f2a14665, type: 3}
-  - {fileID: 21300000, guid: 544952dc2ecd2744dac85c89d89ef47a, type: 3}
-  - {fileID: 21300000, guid: 27309daccfd57af4bb601c98c2e32047, type: 3}
-  - {fileID: 21300000, guid: 7fc8bbc4678a12d449f2de1539eb8910, type: 3}
-  - {fileID: 21300000, guid: 9eb7e1b71307e0343bb08bea82e7db72, type: 3}
-  - {fileID: 21300000, guid: 94a95c4a721f7894c8151f279571ea04, type: 3}
-  - {fileID: 21300000, guid: b0b39cbbc0b0ae04a9b19c273c1955a5, type: 3}
-  - {fileID: 21300000, guid: 9bd1efc3714bb0d469c9c8308a96a745, type: 3}
-  - {fileID: 21300000, guid: 6d04b048476c40044a779d30c1499ffc, type: 3}
-  - {fileID: 21300000, guid: f35263eabdb873549ac6d7dbb159fc56, type: 3}
-  - {fileID: 21300000, guid: d3a57ab8bfcb38248a39d9b4639522a4, type: 3}
-  - {fileID: 21300000, guid: 2177ef483ada5614eaee565f3d3b6700, type: 3}
-  - {fileID: 21300000, guid: c4a8eae7f96adf741987c773f0972560, type: 3}
-  - {fileID: 21300000, guid: c57b5b77aea8515469f487b5de3f5874, type: 3}
-  - {fileID: 21300000, guid: 144180b9d42f1de44b8b6ec2edd565f5, type: 3}
-  - {fileID: 21300000, guid: 402997c26ab1a3d45a6ebe1643d4fc11, type: 3}
-  - {fileID: 21300000, guid: 7ffd0cbcfc57c5346a64b9cd4c87dfa9, type: 3}
-  - {fileID: 21300000, guid: 3b93ada663bfcfb4690a48681115729c, type: 3}
-  - {fileID: 21300000, guid: 280f9dffe73548e49b73826e017df73f, type: 3}
-  - {fileID: 21300000, guid: 937c5eaad39c6134fa6df32fe304503f, type: 3}
   previous: {fileID: 1399774862}
   next: {fileID: 1241961847}
   enabledColor: {r: 0.9137255, g: 0.11764706, b: 0.3882353, a: 1}

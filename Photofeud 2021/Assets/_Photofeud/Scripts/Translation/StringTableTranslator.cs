@@ -1,3 +1,4 @@
+using Photofeud.Abstractions.Translation;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization;

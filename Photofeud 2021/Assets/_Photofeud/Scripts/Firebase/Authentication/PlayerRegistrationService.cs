@@ -1,8 +1,9 @@
 using Firebase;
 using Firebase.Auth;
+using Photofeud.Abstractions.Authentication;
+using Photofeud.Abstractions.Translation;
 using Photofeud.Authentication;
 using Photofeud.Profile;
-using Photofeud.Translation;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ namespace Photofeud.Firebase.Authentication
         public async Task<AuthenticationResult> Register(string displayName, string email, string password)
         {
             var result = await CreateUserWithEmailAndPassword(email, password);
-            
+
             if (result.Code == AuthenticationResultCode.Error || FirebaseAuth.DefaultInstance.CurrentUser is null)
                 return result;
 

@@ -1,4 +1,4 @@
-namespace Photofeud.Translation
+namespace Photofeud.Abstractions.Translation
 {
     public interface ITranslator
     {

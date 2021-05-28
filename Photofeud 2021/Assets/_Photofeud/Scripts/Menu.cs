@@ -70,5 +70,10 @@ namespace Photofeud
             vibrationButtonMaterial.color = MaterialColor(!_hasVibration);
             Settings.SetVibration(_hasVibration);
         }
+
+        public void SignOut()
+        {
+
+        }
     }
 }
