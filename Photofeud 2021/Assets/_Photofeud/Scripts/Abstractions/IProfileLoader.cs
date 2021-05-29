@@ -1,6 +1,6 @@
 using Photofeud.Profile;
 
-namespace Photofeud.Abstractions.Profile
+namespace Photofeud.Abstractions
 {
     public interface IProfileLoader
     {

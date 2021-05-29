@@ -1,15 +1,15 @@
-﻿using Photofeud.Abstractions.Authentication;
+﻿using Photofeud.Abstractions;
 using System.Threading.Tasks;
 
 namespace Photofeud.Authentication
 {
     public class SocialLoginProcessor : AuthenticationProcessor
     {
-        ISocialLoginService _loginService;
+        IAuthenticationService _authenticationService;
 
-        public SocialLoginProcessor(ISocialLoginService loginService)
+        public SocialLoginProcessor(IAuthenticationService authenticationService)
         {
-            _loginService = loginService;
+            _authenticationService = authenticationService;
         }
 
         public void LoginPlayer(SocialLoginProvider provider)
@@ -19,7 +19,7 @@ namespace Photofeud.Authentication
 
         async Task Login(SocialLoginProvider provider)
         {
-            var result = await _loginService.Login(provider);
+            var result = await _authenticationService.LoginWithSocialProvider(provider);
 
             if (result.Code != AuthenticationResultCode.Success)
             {

@@ -1,4 +1,4 @@
-﻿using Photofeud.Abstractions.Authentication;
+﻿using Photofeud.Abstractions;
 using System;
 using System.Threading.Tasks;
 
@@ -10,13 +10,13 @@ namespace Photofeud.Authentication
         const string InvalidEmail = "Invalid Email";
         const string InvalidPassword = "Invalid Password";
 
-        IRegistrationService _registrationService;
+        IAuthenticationService _authenticationService;
 
         bool IsFieldAssigned(string field) => !string.IsNullOrEmpty(field);
 
-        public RegistrationProcessor(IRegistrationService registrationService)
+        public RegistrationProcessor(IAuthenticationService authenticationService)
         {
-            _registrationService = registrationService;
+            _authenticationService = authenticationService;
         }
 
         public void RegisterPlayer(string displayName, string email, string password)
@@ -40,7 +40,7 @@ namespace Photofeud.Authentication
 
         async Task Register(string displayName, string email, string password)
         {
-            var result = await _registrationService.Register(displayName, email, password);
+            var result = await _authenticationService.Register(displayName, email, password);
 
             if (result.Code != AuthenticationResultCode.Success)
             {

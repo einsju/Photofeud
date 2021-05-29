@@ -1,4 +1,5 @@
-using Photofeud.Abstractions.Profile;
+using Photofeud.Abstractions;
+using Photofeud.Utility;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,14 +12,25 @@ namespace Photofeud.Profile
         [SerializeField] TMP_Text displayName;
 
         IProfileLoader _profileLoader;
+        bool _canShow = true;
 
         void Awake()
         {
             _profileLoader = GetComponent<IProfileLoader>();
             State.Profile.SetPlayer(_profileLoader.LoadProfile());
+            _canShow = State.Profile.Player != null;
         }
 
-        void Start() => ShowPlayerInfo();
+        void Start()
+        {
+            if (!_canShow)
+            {
+                SceneNavigator.LoadScene(Scenes.Login);
+                return;
+            }
+
+            ShowPlayerInfo();
+        }
 
         void ShowPlayerInfo()
         {

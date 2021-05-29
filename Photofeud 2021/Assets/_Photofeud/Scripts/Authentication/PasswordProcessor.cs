@@ -1,33 +1,34 @@
-﻿using Photofeud.Abstractions;
+using Photofeud.Abstractions;
 using System;
 using System.Threading.Tasks;
 
 namespace Photofeud.Authentication
 {
-    public class LoginProcessor : AuthenticationProcessor
+    public class PasswordProcessor
     {
+        public event EventHandler PasswordHandled;
+        public event EventHandler<string> PasswordHandleFailed;
+
         const string InvalidEmail = "Invalid Email";
-        const string InvalidPassword = "Invalid Password";
 
         IAuthenticationService _authenticationService;
 
         bool IsFieldAssigned(string field) => !string.IsNullOrEmpty(field);
 
-        public LoginProcessor(IAuthenticationService authenticationService)
+        public PasswordProcessor(IAuthenticationService authenticationService)
         {
             _authenticationService = authenticationService;
         }
 
-        public void LoginPlayer(string email, string password)
+        public void ResetPassword(string email)
         {
-            ValidateSignInInput(email, password);
-            _ = Login(email, password);
+            ValidateInput(email);
+            _ = Reset(email);
         }
 
-        void ValidateSignInInput(string email, string password)
+        void ValidateInput(string email)
         {
             ThrowArgumentNullExceptionOnInvalidData(email, nameof(email), InvalidEmail);
-            ThrowArgumentNullExceptionOnInvalidData(password, nameof(password), InvalidPassword);
         }
 
         void ThrowArgumentNullExceptionOnInvalidData(string data, string paramName, string message)
@@ -36,17 +37,17 @@ namespace Photofeud.Authentication
                 throw new ArgumentNullException(paramName, message);
         }
 
-        async Task Login(string email, string password)
+        async Task Reset(string email)
         {
-            var result = await _authenticationService.Login(email, password);
+            var result = await _authenticationService.ResetPassword(email);
 
             if (result.Code != AuthenticationResultCode.Success)
             {
-                OnPlayerAuthenticationFailed(result.ErrorMessage);
+                PasswordHandleFailed?.Invoke(this, result.ErrorMessage);
                 return;
             }
 
-            OnPlayerAuthenticated();
+            PasswordHandled?.Invoke(this, null);
         }
     }
 }

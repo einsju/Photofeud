@@ -1,6 +1,4 @@
-using Photofeud.Abstractions.Authentication;
-using Photofeud.Abstractions.Error;
-using Photofeud.Abstractions.Loading;
+using Photofeud.Abstractions;
 using Photofeud.Utility;
 using System;
 using UnityEngine;
@@ -15,7 +13,7 @@ namespace Photofeud.Authentication
 
         void Awake()
         {
-            _processor = new GuestLoginProcessor(GetComponent<IGuestLoginService>());
+            _processor = new GuestLoginProcessor(GetComponent<IAuthenticationService>());
             _errorHandler = GetComponent<IErrorHandler>();
             _loader = GetComponent<ILoader>();
         }

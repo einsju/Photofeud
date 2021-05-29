@@ -1,15 +1,15 @@
-﻿using Photofeud.Abstractions.Authentication;
+﻿using Photofeud.Abstractions;
 using System.Threading.Tasks;
 
 namespace Photofeud.Authentication
 {
     public class GuestLoginProcessor : AuthenticationProcessor
     {
-        IGuestLoginService _loginService;
+        IAuthenticationService _authenticationService;
 
-        public GuestLoginProcessor(IGuestLoginService loginService)
+        public GuestLoginProcessor(IAuthenticationService authenticationService)
         {
-            _loginService = loginService;
+            _authenticationService = authenticationService;
         }
 
         public void LoginPlayerAsGuest()
@@ -19,7 +19,7 @@ namespace Photofeud.Authentication
 
         async Task LoginAsGuest()
         {
-            var result = await _loginService.Login();
+            var result = await _authenticationService.LoginAsGuest();
 
             if (result.Code != AuthenticationResultCode.Success)
             {

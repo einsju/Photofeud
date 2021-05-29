@@ -1,6 +1,4 @@
-using Photofeud.Abstractions.Authentication;
-using Photofeud.Abstractions.Error;
-using Photofeud.Abstractions.Loading;
+using Photofeud.Abstractions;
 using Photofeud.Utility;
 using System;
 using TMPro;
@@ -27,7 +25,7 @@ namespace Photofeud.Authentication
 
         void Awake()
         {
-            _processor = new RegistrationProcessor(GetComponent<IRegistrationService>());
+            _processor = new RegistrationProcessor(GetComponent<IAuthenticationService>());
             _errorHandler = GetComponent<IErrorHandler>();
             _loader = GetComponent<ILoader>();
 

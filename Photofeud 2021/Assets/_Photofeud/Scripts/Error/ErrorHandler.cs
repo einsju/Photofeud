@@ -1,4 +1,4 @@
-using Photofeud.Abstractions.Error;
+using Photofeud.Abstractions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

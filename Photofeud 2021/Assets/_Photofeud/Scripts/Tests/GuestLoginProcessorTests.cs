@@ -1,87 +1,90 @@
 using Moq;
 using NUnit.Framework;
-using Photofeud.Abstractions.Authentication;
+using Photofeud.Abstractions;
 using Photofeud.Authentication;
 using Photofeud.Profile;
 
-public class GuestLoginProcessorTests
+namespace Photofeud
 {
-    readonly GuestLoginProcessor _processor;
-    readonly Mock<IGuestLoginService> _loginService;
-    readonly Player _player;
-
-    public GuestLoginProcessorTests()
+    public class GuestLoginProcessorTests
     {
-        _loginService = new Mock<IGuestLoginService>();
-        _processor = new GuestLoginProcessor(_loginService.Object);
-        _player = new Player("Wktb8xUwmyZCtqUF7qvAGXeWPCt2", "Guest", "player@guest.com");
-    }
+        readonly GuestLoginProcessor _processor;
+        readonly Mock<IAuthenticationService> _authenticationService;
+        readonly Player _player;
 
-    [Test]
-    public void Should_Raise_Expected_Event_On_Success()
-    {
-        var authenticationResult = new AuthenticationResult();
-
-        _loginService.Setup(x => x.Login())
-            .Returns(async () => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Success });
-
-        var raised = false;
-
-        _processor.PlayerAuthenticated += (sender, args) =>
+        public GuestLoginProcessorTests()
         {
-            raised = true;
-        };
+            _authenticationService = new Mock<IAuthenticationService>();
+            _processor = new GuestLoginProcessor(_authenticationService.Object);
+            _player = new Player("Wktb8xUwmyZCtqUF7qvAGXeWPCt2", "Guest", "player@guest.com");
+        }
 
-        _processor.LoginPlayerAsGuest();
-
-        Assert.IsTrue(raised);
-    }
-
-    [Test]
-    public void Should_Raise_Expected_Event_On_Error()
-    {
-        var authenticationResult = new AuthenticationResult();
-
-        _loginService.Setup(x => x.Login())
-            .Returns(async () => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Error });
-
-        var raised = false;
-
-        _processor.PlayerAuthenticationFailed += (sender, args) =>
+        [Test]
+        public void Should_Raise_Expected_Event_On_Success()
         {
-            raised = true;
-        };
+            var authenticationResult = new AuthenticationResult();
 
-        _processor.LoginPlayerAsGuest();
+            _authenticationService.Setup(x => x.LoginAsGuest())
+                .Returns(async () => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Success });
 
-        Assert.IsTrue(raised);
-    }
+            var raised = false;
 
-    [Test]
-    public void Should_Return_Player_On_Success()
-    {
-        var authenticationResult = new AuthenticationResult();
+            _processor.PlayerAuthenticated += (sender, args) =>
+            {
+                raised = true;
+            };
 
-        _loginService.Setup(x => x.Login())
-            .Returns(async () => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Success, Player = _player });
+            _processor.LoginPlayerAsGuest();
 
-        _processor.LoginPlayerAsGuest();
+            Assert.IsTrue(raised);
+        }
 
-        Assert.AreSame(authenticationResult.Player, _player);
-        Assert.IsNotNull(authenticationResult.Player);
-    }
+        [Test]
+        public void Should_Raise_Expected_Event_On_Error()
+        {
+            var authenticationResult = new AuthenticationResult();
 
-    [Test]
-    public void Should_Not_Return_Player_On_Error()
-    {
-        var authenticationResult = new AuthenticationResult();
+            _authenticationService.Setup(x => x.LoginAsGuest())
+                .Returns(async () => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Error });
 
-        _loginService.Setup(x => x.Login())
-            .Returns(async () => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Error });
+            var raised = false;
 
-        _processor.LoginPlayerAsGuest();
+            _processor.PlayerAuthenticationFailed += (sender, args) =>
+            {
+                raised = true;
+            };
 
-        Assert.AreNotSame(authenticationResult.Player, _player);
-        Assert.IsNull(authenticationResult.Player);
+            _processor.LoginPlayerAsGuest();
+
+            Assert.IsTrue(raised);
+        }
+
+        [Test]
+        public void Should_Return_Player_On_Success()
+        {
+            var authenticationResult = new AuthenticationResult();
+
+            _authenticationService.Setup(x => x.LoginAsGuest())
+                .Returns(async () => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Success, Player = _player });
+
+            _processor.LoginPlayerAsGuest();
+
+            Assert.AreSame(authenticationResult.Player, _player);
+            Assert.IsNotNull(authenticationResult.Player);
+        }
+
+        [Test]
+        public void Should_Not_Return_Player_On_Error()
+        {
+            var authenticationResult = new AuthenticationResult();
+
+            _authenticationService.Setup(x => x.LoginAsGuest())
+                .Returns(async () => authenticationResult = new AuthenticationResult { Code = AuthenticationResultCode.Error });
+
+            _processor.LoginPlayerAsGuest();
+
+            Assert.AreNotSame(authenticationResult.Player, _player);
+            Assert.IsNull(authenticationResult.Player);
+        }
     }
 }
