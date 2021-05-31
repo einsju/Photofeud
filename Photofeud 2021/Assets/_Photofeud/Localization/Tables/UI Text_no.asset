@@ -94,5 +94,25 @@ MonoBehaviour:
     m_Localized: Spill som gjest
     m_Metadata:
       m_Items: []
+  - m_Id: 13504282809851904
+    m_Localized: Innstillinger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13504332264890368
+    m_Localized: Glemt passord?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13991230586478592
+    m_Localized: Tilbakestill passord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13991951293734912
+    m_Localized: Lagre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13992292777189376
+    m_Localized: Nytt passord
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

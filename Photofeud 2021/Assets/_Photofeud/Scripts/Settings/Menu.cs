@@ -5,20 +5,18 @@ using UnityEngine;
 
 namespace Photofeud.Settings
 {
-    [RequireComponent(typeof(Animator))]
     public class Menu : MonoBehaviour
     {
-        [SerializeField] GameObject[] controlsThatNeedAuthentication;
+        [SerializeField] Transform settingsCanvas;
+        [SerializeField] GameObject[] controlsThatNeedAuthentication;        
 
-        Animator _transition;
-        LogoutProcessor _logoutProcessor;
+        LogoutProcessor _processor;
 
         bool IsAuthenticated => State.Profile.PlayerIsSignedIn();
 
         void Awake()
         {
-            _transition = GetComponent<Animator>();
-            _logoutProcessor = new LogoutProcessor(GetComponent<IAuthenticationService>());
+            _processor = new LogoutProcessor(GetComponent<IAuthenticationService>());
         }
 
         void Start()
@@ -34,24 +32,31 @@ namespace Photofeud.Settings
                 control.SetActive(true);
         }
 
-        public void OpenMenu()
+        public void OpenMenu(Transform fromCanvas)
         {
-            _transition.SetTrigger(Triggers.MenuOpen);
+            CanvasHandler.ChangeCanvas(fromCanvas, transform);
         }
 
-        public void CloseMenu()
+        public void CloseMenu(Transform toCanvas)
         {
-            _transition.SetTrigger(Triggers.MenuClose);
+            CanvasHandler.ChangeCanvas(transform, toCanvas);
+        }
+
+        public void OpenSubMenu(Transform toCanvas)
+        {
+            CanvasHandler.ChangeCanvas(settingsCanvas, toCanvas);
+        }
+
+        public void CloseSubMenu(Transform fromCanvas)
+        {
+            CanvasHandler.ChangeCanvas(fromCanvas, settingsCanvas);
         }
 
         public void SignOut()
         {
-            _logoutProcessor.LogoutPlayer();
+            _processor.LogoutPlayer();
+            State.Profile.SetPlayer(null);
             SceneNavigator.LoadScene(Scenes.Login);
-        }
-
-        public void ResetPassword()
-        {
         }
     }
 }

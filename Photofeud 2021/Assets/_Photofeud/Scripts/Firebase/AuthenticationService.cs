@@ -3,21 +3,11 @@ using Photofeud.Abstractions;
 using Photofeud.Authentication;
 using Photofeud.Profile;
 using System.Threading.Tasks;
-using UnityEngine;
 
 namespace Photofeud.Firebase
 {
-    public class AuthenticationService : MonoBehaviour, IAuthenticationService
+    public class AuthenticationService : FirebaseService, IAuthenticationService
     {
-        ITranslator _translator;
-
-        bool TaskIsOk(Task task) => !task.IsCanceled && !task.IsFaulted;
-
-        void Awake()
-        {
-            _translator = GetComponent<ITranslator>();
-        }
-
         public async Task<AuthenticationResult> Login(string email, string password)
         {
             var result = new AuthenticationResult { Code = AuthenticationResultCode.Success };
@@ -157,11 +147,6 @@ namespace Photofeud.Firebase
             });
 
             return result;
-        }
-
-        public Task<AuthenticationResult> ResetPassword(string email)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

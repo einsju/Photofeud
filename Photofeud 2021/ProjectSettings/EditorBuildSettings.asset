@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Photofeud/Scenes/Sign Up.unity
     guid: afda6a3cb9fd3cb4e80ad32a5283c111
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Photofeud/Scenes/Game.unity
     guid: 674c011b5207d5e44b1d0de334ccc4e8
   - enabled: 0

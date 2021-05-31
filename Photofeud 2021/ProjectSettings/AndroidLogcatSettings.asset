@@ -3,69 +3,51 @@
     "m_SelectedPackage": {
         "deviceId": "LHS0218A10002422",
         "name": "com.einarsen.photofeud",
-        "processId": 13490,
-        "exited": true
+        "processId": 26450,
+        "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "LHS0218A10002422",
-            "name": "com.huawei.android.launcher",
-            "processId": 2866,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
             "name": "com.einarsen.photofeud",
-            "processId": 12192,
+            "processId": 15835,
             "exited": true
         },
         {
             "deviceId": "LHS0218A10002422",
             "name": "com.einarsen.photofeud",
-            "processId": 14493,
+            "processId": 19307,
             "exited": true
         },
         {
             "deviceId": "LHS0218A10002422",
             "name": "com.einarsen.photofeud",
-            "processId": 25400,
+            "processId": 22161,
             "exited": true
         },
         {
             "deviceId": "LHS0218A10002422",
             "name": "com.einarsen.photofeud",
-            "processId": 18548,
+            "processId": 23654,
             "exited": true
         },
         {
             "deviceId": "LHS0218A10002422",
             "name": "com.einarsen.photofeud",
-            "processId": 21674,
+            "processId": 31256,
             "exited": true
         },
         {
             "deviceId": "LHS0218A10002422",
             "name": "com.einarsen.photofeud",
-            "processId": 22766,
-            "exited": false
+            "processId": 25468,
+            "exited": true
         },
         {
             "deviceId": "LHS0218A10002422",
             "name": "com.einarsen.photofeud",
-            "processId": 9508,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 11013,
-            "exited": false
-        },
-        {
-            "deviceId": "LHS0218A10002422",
-            "name": "com.einarsen.photofeud",
-            "processId": 13490,
+            "processId": 26450,
             "exited": false
         }
     ],

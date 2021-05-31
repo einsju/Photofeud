@@ -94,5 +94,25 @@ MonoBehaviour:
     m_Localized: Play as guest
     m_Metadata:
       m_Items: []
+  - m_Id: 13504282809851904
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13504332264890368
+    m_Localized: Forgot password?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13991230586478592
+    m_Localized: Reset password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13991951293734912
+    m_Localized: Save
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13992292777189376
+    m_Localized: New password
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

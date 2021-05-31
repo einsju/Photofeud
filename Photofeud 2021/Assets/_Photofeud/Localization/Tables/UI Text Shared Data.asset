@@ -91,6 +91,26 @@ MonoBehaviour:
     m_Key: play-as-guest
     m_Metadata:
       m_Items: []
+  - m_Id: 13504282809851904
+    m_Key: settings-title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13504332264890368
+    m_Key: settings-forgot-password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13991230586478592
+    m_Key: settings-reset-password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13991951293734912
+    m_Key: save
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13992292777189376
+    m_Key: settings-new-passwor
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

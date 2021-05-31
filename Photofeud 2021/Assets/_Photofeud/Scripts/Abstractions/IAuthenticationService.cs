@@ -10,6 +10,5 @@ namespace Photofeud.Abstractions
         Task<AuthenticationResult> LoginAsGuest();
         Task<AuthenticationResult> LoginWithSocialProvider(SocialLoginProvider provider = SocialLoginProvider.Google);
         AuthenticationResult Logout();
-        Task<AuthenticationResult> ResetPassword(string email);
     }
 }

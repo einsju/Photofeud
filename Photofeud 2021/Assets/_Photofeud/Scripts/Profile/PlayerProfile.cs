@@ -34,8 +34,8 @@ namespace Photofeud.Profile
 
         void ShowPlayerInfo()
         {
-            avatar.sprite = Resources.Load<Sprite>($"Avatars/{State.Profile.Player.Avatar}");
             displayName.text = State.Profile.Player.ScreenDisplayName;
+            if (!string.IsNullOrEmpty(State.Profile.Player.Avatar)) avatar.sprite = Resources.Load<Sprite>($"Avatars/{State.Profile.Player.Avatar}");
         }
     }
 }
