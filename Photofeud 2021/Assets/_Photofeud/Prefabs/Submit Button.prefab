@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Start new game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a36c05d6118cc434294dd1ffd1935cb9, type: 2}
   m_sharedMaterial: {fileID: -4454786756946391720, guid: a36c05d6118cc434294dd1ffd1935cb9,
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4294309365
   m_fontColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
