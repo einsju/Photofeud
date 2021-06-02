@@ -61,8 +61,6 @@ namespace Photofeud.Authentication
 
         void HandleEvents(AuthenticationResult result)
         {
-            UnityEngine.Debug.Log(result.Code);
-            
             if (result.Code != AuthenticationResultCode.Success)
             {
                 ProfileUpdateFailed?.Invoke(this, result.ErrorMessage);

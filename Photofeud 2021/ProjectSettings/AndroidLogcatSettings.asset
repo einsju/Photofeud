@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "LHS0218A10002422",
         "name": "com.einarsen.photofeud",
-        "processId": 26450,
+        "processId": 28215,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -48,6 +48,12 @@
             "deviceId": "LHS0218A10002422",
             "name": "com.einarsen.photofeud",
             "processId": 26450,
+            "exited": false
+        },
+        {
+            "deviceId": "LHS0218A10002422",
+            "name": "com.einarsen.photofeud",
+            "processId": 28215,
             "exited": false
         }
     ],

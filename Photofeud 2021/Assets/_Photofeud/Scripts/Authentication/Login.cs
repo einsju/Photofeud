@@ -22,18 +22,18 @@ namespace Photofeud.Authentication
 
         void Awake()
         {
-            _processor = new LoginProcessor(GetComponent<IAuthenticationService>());
-            _errorHandler = GetComponent<IErrorHandler>();
-            _loader = GetComponent<ILoader>();
-
+            _processor = new LoginProcessor(InterfaceFinder.Find<IAuthenticationService>());
+            _errorHandler = InterfaceFinder.Find<IErrorHandler>();
+            _loader = InterfaceFinder.Find<ILoader>();
             _loginButtonCanvasGroup = login.GetComponent<CanvasGroup>();
-            _loginCanvasGroupAlpha = _loginButtonCanvasGroup.alpha;            
+            _loginCanvasGroupAlpha = _loginButtonCanvasGroup.alpha;
         }
 
         void OnEnable()
         {
             _processor.PlayerAuthenticated += PlayerAuthenticated;
             _processor.PlayerAuthenticationFailed += PlayerAuthenticationFailed;
+            email.text = password.text = "";
         }
 
         void OnDisable()
@@ -59,7 +59,8 @@ namespace Photofeud.Authentication
 
         void PlayerAuthenticated(object sender, EventArgs e)
         {
-            SceneNavigator.LoadScene(Scenes.Main);
+            _loader.Stop();
+            ScreenManager.Instance.OpenGameScreen();
         }
 
         void PlayerAuthenticationFailed(object sender, string error)

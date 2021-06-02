@@ -26,11 +26,11 @@ namespace Photofeud.Utility
 
         void PrepareAnimation(Transform fromCanvas, Transform toCanvas)
         {
-            Instance._fromCanvas = fromCanvas;
-            Instance._fromCanvas.localScale = Vector3.one;
-            Instance._toCanvas = toCanvas;
-            Instance._toCanvas.localScale = Vector3.zero;
-            Instance._toCanvas.gameObject.SetActive(true);
+            _fromCanvas = fromCanvas;
+            _fromCanvas.localScale = Vector3.one;
+            _toCanvas = toCanvas;
+            _toCanvas.localScale = Vector3.zero;
+            _toCanvas.gameObject.SetActive(true);
         }
 
         void Awake()

@@ -6,14 +6,8 @@ namespace Photofeud.State
     {
         public static Player Player { get; private set; }
 
-        public static void SetPlayer(Player player)
-        {
-            Player = player;
-        }
+        public static bool IsAuthenticated => Player != null;
 
-        public static bool PlayerIsSignedIn()
-        {
-            return Player != null;
-        }
+        public static void SetPlayer(Player player) => Player = player;
     }
 }

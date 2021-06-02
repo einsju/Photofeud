@@ -1,5 +1,6 @@
 using Photofeud.Abstractions;
 using Photofeud.Authentication;
+using Photofeud.Utility;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,19 +14,26 @@ namespace Photofeud.Settings
         [SerializeField] Button updatePassword;
 
         ProfileUpdateProcessor _processor;
+        IErrorHandler _errorHandler;
+        ILoader _loader;
+
         CanvasGroup _canvasGroup;
         float _alpha;
 
         void Awake()
         {
-            _processor = new ProfileUpdateProcessor(GetComponent<IProfileUpdateService>());
+            _processor = new ProfileUpdateProcessor(InterfaceFinder.Find<IProfileUpdateService>());
+            _errorHandler = InterfaceFinder.Find<IErrorHandler>();
+            _loader = InterfaceFinder.Find<ILoader>();
             _canvasGroup = updatePassword.GetComponent<CanvasGroup>();
             _alpha = _canvasGroup.alpha;
         }
+
         void OnEnable()
         {
             _processor.ProfileUpdated += ProfileUpdated;
             _processor.ProfileUpdateFailed += ProfileUpdateFailed;
+            password.text = repeatPassword.text = "";
         }
 
         void OnDisable()
@@ -45,17 +53,20 @@ namespace Photofeud.Settings
 
         public void UpdatePassword()
         {
+            _loader.Load();
             _processor.UpdatePassword(password.text);
         }
 
         void ProfileUpdated(object sender, EventArgs e)
         {
-            //CloseMenu();
+            _loader.Stop();
+            ScreenManager.Instance.CloseScreen();
         }
 
         void ProfileUpdateFailed(object sender, string error)
         {
-            //Debug.Log(error);
+            _loader.Stop();
+            _errorHandler.HandleError(error);
         }
     }
 }

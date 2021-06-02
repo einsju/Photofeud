@@ -13,9 +13,9 @@ namespace Photofeud.Authentication
 
         void Awake()
         {
-            _processor = new GuestLoginProcessor(GetComponent<IAuthenticationService>());
-            _errorHandler = GetComponent<IErrorHandler>();
-            _loader = GetComponent<ILoader>();
+            _processor = new GuestLoginProcessor(InterfaceFinder.Find<IAuthenticationService>());
+            _errorHandler = InterfaceFinder.Find<IErrorHandler>();
+            _loader = InterfaceFinder.Find<ILoader>();
         }
 
         void OnEnable()
@@ -38,7 +38,8 @@ namespace Photofeud.Authentication
 
         void PlayerAuthenticated(object sender, EventArgs e)
         {
-            SceneNavigator.LoadScene(Scenes.Main);
+            _loader.Stop();
+            ScreenManager.Instance.CloseScreen();
         }
 
         void PlayerAuthenticationFailed(object sender, string error)

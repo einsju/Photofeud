@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Photofeud/Scenes/Main.unity
+    path: Assets/_Photofeud/Scenes/Game.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Photofeud/Scenes/Sign In.unity
     guid: 6f55d9ea6d9d54145a8230b537bf6206
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Photofeud/Scenes/Sign Up.unity
     guid: afda6a3cb9fd3cb4e80ad32a5283c111
   - enabled: 0
-    path: Assets/_Photofeud/Scenes/Game.unity
+    path: Assets/_Photofeud/Scenes/Game_old.unity
     guid: 674c011b5207d5e44b1d0de334ccc4e8
   - enabled: 0
     path: Assets/_Photofeud/Scenes/Leaderboard.unity

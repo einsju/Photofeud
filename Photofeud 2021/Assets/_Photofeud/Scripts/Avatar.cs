@@ -20,6 +20,13 @@ namespace Photofeud
             SetAvatar();
         }
 
+        void OnEnable()
+        {
+            _index = 0;
+            SetAvatar();
+            UpdateButtons();
+        }
+
         public void OnPrevious()
         {
             _index--;
