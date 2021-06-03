@@ -1,5 +1,3 @@
-using Photofeud.Abstractions;
-using Photofeud.Utility;
 using System;
 using UnityEngine;
 
@@ -7,52 +5,18 @@ namespace Photofeud.State
 {
     public class StateManager : MonoBehaviour
     {
-        //static event Action<States> StateChangedEventHandler;
+        public static event Action PlayerLoggedInEventHandler;
+        public static event Action PlayerLoggedOutEventHandler;
 
-        [SerializeField] GameObject[] screens;
-
-        IProfileLoader _profileLoader;
-        //States _currentState;
-
-        //States DefaultState => States.Game;
-
-        void Awake()
+        public static void OnPlayerLoggedIn()
         {
-            //_profileLoader = GetComponent<IProfileLoader>();
-            //Profile.SetPlayer(_profileLoader.LoadProfile());
-
-            //_currentState = DefaultState;
-            //if (!Profile.IsAuthenticated) ChangeState(States.Login);
-            //if (Profile.IsAuthenticated) ChangeState(States.Login);
+            PlayerLoggedInEventHandler?.Invoke();
         }
 
-        void Start()
+        public static void OnPlayerLoggedOut()
         {
-            // REMOVE THIS CODE
-            //Profile.SetPlayer(null);
-            //ScreenManager.Instance.OpenLoginScreen();
-            //
+            Profile.SetPlayer(null);
+            PlayerLoggedOutEventHandler?.Invoke();
         }
-
-        //void OnEnable()
-        //{
-        //    StateChangedEventHandler += ChangeState;
-        //}
-
-        //void OnDisable()
-        //{
-        //    StateChangedEventHandler -= ChangeState;
-        //}
-
-        //public static void OnStateChanged(States newState)
-        //{
-        //    StateChangedEventHandler?.Invoke(newState);
-        //}
-
-        //void ChangeState(States newState)
-        //{
-        //    _currentState = newState;
-        //    Debug.Log(_currentState);
-        //}
     }
 }

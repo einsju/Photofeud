@@ -1,6 +1,4 @@
-using Photofeud.Utility;
-using System.Collections.Generic;
-using System.Linq;
+using Photofeud.State;
 using UnityEngine;
 
 namespace Photofeud
@@ -8,16 +6,42 @@ namespace Photofeud
     public class ScreenManager : MonoBehaviour
     {
         public static ScreenManager Instance;
-        
-        [SerializeField] GameObject gameScreen;
-        [SerializeField] GameObject loginScreen;
 
-        IList<GameObject> _screens = new List<GameObject>();
+        [SerializeField] Screen gameScreen;
+        [SerializeField] Screen loginScreen;
 
-        GameObject CurrentScreen => _screens.Last();
-        GameObject PreviousScreen => _screens[_screens.IndexOf(CurrentScreen) - 1];
+        IScreenTransition _transition;
+        ScreenStack _stack;
 
-        void Awake() => Instance = this;
+        void Awake()
+        {
+            Instance = this;
+            _transition = GetComponent<IScreenTransition>();
+            _stack = new ScreenStack(gameScreen);
+        }
+        void OnEnable()
+        {
+            StateManager.PlayerLoggedInEventHandler += PlayerLoggedIn;
+            StateManager.PlayerLoggedOutEventHandler += PlayerLoggedOut;
+        }
+
+        void OnDisable()
+        {
+            StateManager.PlayerLoggedInEventHandler -= PlayerLoggedIn;
+            StateManager.PlayerLoggedOutEventHandler -= PlayerLoggedOut;
+        }
+
+        void PlayerLoggedIn()
+        {
+            _transition.ExecuteTransition(_stack.CurrentScreen, gameScreen);
+            _stack.ClearHistoryAndSetTop(gameScreen);
+        }
+
+        void PlayerLoggedOut()
+        {
+            _transition.ExecuteTransition(_stack.CurrentScreen, loginScreen);
+            _stack.ClearHistoryAndSetTop(loginScreen);
+        }
 
         void Start()
         {
@@ -27,44 +51,26 @@ namespace Photofeud
                 return;
             }
 
-            _screens.Add(gameScreen);
+            _stack.Add(gameScreen);
         }
 
-        public void OpenScreenWithoutTransition(GameObject fromScreen, GameObject toScreen)
+        void OpenScreenWithoutTransition(Screen fromScreen, Screen toScreen)
         {
-            fromScreen.SetActive(false);
-            toScreen.SetActive(true);
-            _screens.Add(toScreen);
+            fromScreen.gameObject.SetActive(false);
+            toScreen.gameObject.SetActive(true);
+            _stack.Add(toScreen);
         }
 
-        public void OpenGameScreen()
+        public void OpenScreen(Screen screen)
         {
-            CanvasHandler.ChangeCanvas(CurrentScreen.transform, gameScreen.transform);
-            ResetScreensAndSetFirst(gameScreen);
-        }
-
-        public void OpenLoginScreen()
-        {
-            CanvasHandler.ChangeCanvas(CurrentScreen.transform, loginScreen.transform);
-            ResetScreensAndSetFirst(loginScreen);
-        }
-
-        void ResetScreensAndSetFirst(GameObject screen)
-        {
-            _screens.Clear();
-            _screens.Add(screen);
-        }
-
-        public void OpenScreen(GameObject screen)
-        {
-            CanvasHandler.ChangeCanvas(CurrentScreen.transform, screen.transform);
-            _screens.Add(screen);
+            _transition.ExecuteTransition(_stack.CurrentScreen, screen);
+            _stack.Add(screen);
         }
 
         public void CloseScreen()
-        {            
-            CanvasHandler.ChangeCanvas(CurrentScreen.transform, PreviousScreen.transform);
-            _screens.Remove(CurrentScreen);
+        {
+            _transition.ExecuteTransition(_stack.CurrentScreen, _stack.PreviousScreen);
+            _stack.Remove(_stack.CurrentScreen);
         }
     }
 }

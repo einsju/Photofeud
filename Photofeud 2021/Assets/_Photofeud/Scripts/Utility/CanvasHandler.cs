@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Photofeud.Utility
 {
-    public class CanvasHandler : MonoBehaviour
+    public class CanvasHandler : MonoBehaviour, IScreenTransition
     {
         [SerializeField] float duration = 0.5f;
 
@@ -58,6 +58,12 @@ namespace Photofeud.Utility
             _animate = !isLast;
             canvas.localScale = endScale;
             canvas.gameObject.SetActive(isLast);
+        }
+
+        public void ExecuteTransition(Screen start, Screen end)
+        {
+            PrepareAnimation(start.transform, end.transform);
+            _animate = true;
         }
     }
 }

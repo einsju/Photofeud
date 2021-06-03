@@ -1,4 +1,5 @@
 using Photofeud.Abstractions;
+using Photofeud.State;
 using Photofeud.Utility;
 using System;
 using TMPro;
@@ -60,7 +61,7 @@ namespace Photofeud.Authentication
         void PlayerAuthenticated(object sender, EventArgs e)
         {
             _loader.Stop();
-            ScreenManager.Instance.OpenGameScreen();
+            StateManager.OnPlayerLoggedIn();
         }
 
         void PlayerAuthenticationFailed(object sender, string error)

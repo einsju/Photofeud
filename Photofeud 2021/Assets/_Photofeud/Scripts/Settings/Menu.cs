@@ -1,5 +1,6 @@
 using Photofeud.Abstractions;
 using Photofeud.Authentication;
+using Photofeud.State;
 using Photofeud.Utility;
 using System.Linq;
 using UnityEngine;
@@ -31,8 +32,7 @@ namespace Photofeud.Settings
         public void SignOut()
         {
             _processor.LogoutPlayer();
-            State.Profile.SetPlayer(null);
-            ScreenManager.Instance.OpenLoginScreen();
+            StateManager.OnPlayerLoggedOut();
         }
     }
 }
